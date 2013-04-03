@@ -1,0 +1,9 @@
+User-agent: *
+
+Disallow: /wp-*
+Disallow: *.php
+Disallow: */feed*
+Disallow: */trackback*
+Disallow: */css*
+Disallow: */fonts*
+Disallow: */js*
