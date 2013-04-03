@@ -6,7 +6,7 @@ I recommend using a "styleguide":http://larrybotha.github.com/styleguide/ for a 
 
 h2. Features
 
-This theme has following the features:
+This theme has the following features:
 # concise, uncluttered, and well commented templates
 # a well featured functions.php
 # "H5BP's":https://github.com/h5bp/html5-boilerplate/blob/master/.htaccess htaccess, with additional WordPress security
