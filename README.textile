@@ -1,0 +1,22 @@
+h1. WordPress Boilerplate
+
+This is a simple and robust starting point for developing WordPress themes. This theme contains no styling, and includes a minified jQuery 1.8.3
+
+I recommend using a "styleguide":http://larrybotha.github.com/styleguide/ for a plainly styled CSS boilerplate that includes WordPress defaults.
+
+h2. Features
+
+This theme supports the following basic templates and features:
+# concise, uncluttered, and well commented templates
+# a well featured functions.php
+# "H5BP's":https://github.com/h5bp/html5-boilerplate/blob/master/.htaccess htaccess, with additional WordPress security
+
+h2. Usage
+
+# clone this repo into your WordPress install's themes/ folder
+# develop your WordPress theme in debug mode
+# party.
+
+h4. License
+
+MIT: http://larrybotha.mit-license.org/
