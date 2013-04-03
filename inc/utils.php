@@ -1,73 +1,12 @@
 <?php
-// Version 1.0.0
+/**
+  * A suite of helper classes
+  *
+  * @author  Stan Bondi <stan@fixate.it>
+  */
 
 class HTMLUtil
 {
-  public static function GetStyles($styles, $pagename = null)
-  {
-    $result = '';
-    foreach ($styles as $style) {
-      if (is_array($style)) {
-        $key = key($style);
-        $value = $style[$key];
-
-        // Conditional style
-        if (String::StartsWith($key, '*')) {
-          $key = substr($key, 1);
-          $result .= "<!--[if {$key}]>
-<link rel=\"stylesheet\" type=\"text/css\" href=\"{$value}\" />
-<![endif]-->\n\n";
-          continue;
-        }
-
-        if (!isset($pagename)) {
-          $result .= "<link rel=\"stylesheet\" type=\"text/css\" href=\"{$value}\" />\n";
-          continue;
-        }
-
-        if (strtolower($pagename) == strtolower($key))
-          $result .= "<link rel=\"stylesheet\" type=\"text/css\" href=\"{$value}\" />\n";
-        continue;
-      }
-      
-      $result .= "<link rel=\"stylesheet\" type=\"text/css\" href=\"{$style}\" />\n";
-    }
-    return $result;
-  }
-
-  public static function GetScripts($scripts, $pagename = null)
-  {
-    $result = '';
-    foreach ($scripts as $script) {
-      if (is_array($script)) {
-        $key = key($script);
-        $value = $script[$key];
-
-        // Conditional Script
-        if (String::StartsWith($key, '*')) {
-          $key = substr($key, 1);
-          $result .= "<!--[if {$key}]>
-<script type=\"text/javascript\" src=\"{$value}\"></script>
-<![endif]-->\n\n";
-          continue;
-        }
-        
-        // Page Script
-        if (!isset($pagename)) {
-          $result .= "<script src=\"{$value}\" type=\"text/javascript\"></script>\n";
-          continue;
-        }
-
-        if (strtolower($pagename) == strtolower($key))
-          $result .= "<script src=\"{$value}\" type=\"text/javascript\"></script>\n";
-        continue;
-      }
-      
-      $result .= "<script src=\"{$script}\" type=\"text/javascript\"></script>\n";
-    }
-    return $result;
-  }
-
   public static function DecodeHtmlEntities($string, $exceptions = array())
   {
     // replace numeric entities
@@ -117,7 +56,7 @@ class HTMLUtil
   function StripSlashesDeep($value)
   {
     return (is_array($value)) ?
-      array_map(array('HTMLUtil', 'StripSlashesDeep'), $value) :
+      array_map(array(__CLASS__, __FUNCTION__), $value) :
       stripslashes($value);
   }
   
@@ -125,24 +64,6 @@ class HTMLUtil
 
 class PHP
 {
-  public static function GetTemplate($name, $args = null)
-  {
-    $filename = "$name.tpl.php";
-    if (!is_file($filename)) {
-      die($filename . ' is not a valid file!');
-      return false;
-    }
-
-    // Create context
-    if ($args && is_array($args) && count($args) > 0) {
-      foreach ($args as $key => $value) {
-        eval("\$$key = \$args[\$key];");
-      }
-    }
-
-    include $filename;
-  }
-
   public static function GetIncludeContent($filename, $args = null) 
   {
     if (!is_file($filename)) {
