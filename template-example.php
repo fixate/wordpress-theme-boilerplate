@@ -9,7 +9,7 @@ Template Name: Example template (Remove if not using)
  *
  * @package WordPress
  * @subpackage Theme_Name
- * @since Theme Na,e 1.0
+ * @since Theme Name 1.0
  */
 ?>
 <?php get_header(); ?>
