@@ -36,7 +36,7 @@
 
 	<?php if (!is_single()): ?>
 		<p>
-			<?php echo fix8_custom_excerpt(40); ?>
+			<?php echo theme_name_custom_excerpt(40); ?>
 			<a href="<?php the_permalink() ?>">read more</a>
 		</p>
 	<?php else: ?>
