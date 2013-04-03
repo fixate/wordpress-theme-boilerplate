@@ -11,15 +11,38 @@ if ( function_exists( 'add_theme_support' ) ) {
 	add_theme_support( 'automatic_feed_links' );
 }
 
-/*require_once (THEME_NAME_THEME_BASEPATH.'/inc/class.utils.php');
-require_once (THEME_NAME_THEME_BASEPATH.'/inc/widgets.php');
-require_once (THEME_NAME_THEME_BASEPATH.'/inc/shortcodes.php');
-require_once (THEME_NAME_THEME_BASEPATH.'/inc/wp-admin/metaboxes.php');*/
+# Include helper classes
+// require_once 'inc/utils.php';
+# Include custom widgets
+// require_once 'inc/widgets.php';
+# Include shortcodes
+// require_once 'inc/shortcodes.php';
+# Include if using the contact form
+require_once 'inc/validation.php';
+require_once 'inc/mailman.php';
+Mailman::wp_bootstrap(array(
+	'to' => array('stan@fixate.it', 'your name'),	
+	'templates' => array(
+		'html' => THEME_NAME_THEME_BASEPATH.'/inc/templates/contact.html.php',
+		'text' => THEME_NAME_THEME_BASEPATH.'/inc/templates/contact.text.php',
+	),
+	'success_message' => "Your message has been sent! You'll hear back from us soon.",
+	'validation_messages' => array(
+		'Validation::presence' => '%s cannot be blank.',
+		'Validation::email' => '%s must be a valid email address.',
+	),
+	'validates' => array(
+		'mail_name' => array('Validation::presence'),
+		'mail_email' => array('Validation::presence', 'Validation::email'),
+		'mail_message' =>  array('Validation::presence' => 'Please enter a message.'),
+	)
+));
+
 
 // Conditionally include admin functions
-if (is_admin())
-	require_once ('inc/wp-admin/functions.php');
-
+if (is_admin()) {	
+	require_once 'inc/wp-admin/functions.php';	
+}
 
 /* *****************************************************************************
 	 &actions
@@ -125,7 +148,7 @@ if ( ! function_exists( 'theme_name_comment' ) ) {
  */
 function theme_name_custom_excerpt($limit) {
 	$excerpt = explode(' ', get_the_excerpt(), $limit);
-	if (count($excerpt)>=$limit) {
+	if (count($excerpt) >= $limit) {
 		array_pop($excerpt);
 		$excerpt = implode(" ",$excerpt).'...';
 	} else {
