@@ -17,6 +17,8 @@ class Mailman
 	private $multipart = false;
 	private $mailer = null;
 
+	private $from_fields = null;
+
 	private $data = null;
 
 	public function __construct($options = array())
@@ -26,9 +28,9 @@ class Mailman
 		if (isset($options['to'])) {
 			$to = $options['to'];
 			if (is_array($to)) {
-				$this->mailer->AddAddress('to', $to[0], $to[1]);
+				$this->mailer->AddAddress($to[0], $to[1]);
 			} else {
-				$this->mailer->AddAddress('to', $to);
+				$this->mailer->AddAddress($to);
 			}
 		}
 
@@ -41,6 +43,10 @@ class Mailman
 			}
 		}
 
+		if (isset($options['from_fields'])) {
+			$this->from_fields = $options['from_fields'];
+		}
+
 		if (isset($options['reply_to'])) {
 			$reply_to  = $options['reply_to'];
 			if (is_array($reply_to)) {
@@ -51,11 +57,25 @@ class Mailman
 		}
 
 		if (isset($options['subject'])) {
-			$this->Subject = $options['subject'];
+			$this->mailer->Subject = $options['subject'];
 		}
 
 		if (isset($options['delivery_method'])) {
 			$this->delivery_method = $options['delivery_method'];
+		}
+
+		if ($this->delivery_method == 'smtp') {
+			$smtp = isset($options['smtp']) ? $options['smtp'] : null;
+			if (!$smtp || !isset($smtp['host']) || !isset($smtp['port'])) {
+				throw new Exception('SMTP hostname and port required for SMTP delivery method.');
+			}
+
+			$this->mailer->Host = $smtp['host'];
+			$this->mailer->Port = $smtp['port'];
+			if (isset($smtp['auth']) && $smtp['auth']) {
+				$this->mailer->Username = $smtp['username'];
+				$this->mailer->Password = $smtp['password'];
+			}
 		}
 
 		if (isset($options['validates'])) {
@@ -133,8 +153,7 @@ class Mailman
 		if (!$this->data) {
 			$this->data = array();
 		}
-
-		array_merge($this->data, $data);
+		$this->data = array_merge($this->data, $data);
 		return $this;		
 	}
 
@@ -154,6 +173,30 @@ class Mailman
 		return $this;
 	}
 
+	public function render_notifications($options = array())
+	{
+		if (!$this->has_notifications()) {
+			return '';
+		}
+		
+		$result  = '';
+		foreach ($this->notifications() as $type => $messages) {
+			$class = sprintf(
+				isset($options['class']) ? $options['class'] : "alert alert-%s",
+				$type);
+
+			if (count($messages)) {
+				$result .= "<div class='{$class}'>";
+				foreach ($messages as $message) {
+					$result .= $message.'<br>';
+				}
+				$result .= '</div>';
+			}
+		}
+
+		return $result;
+	}
+
 	public function validate()
 	{
 		if (!$this->validations) { return true; }
@@ -171,7 +214,7 @@ class Mailman
 					# Validate
 					if (!call_user_func_array($cb, array($value))) {
 						$result = false;
-						$this->notifications['error'][] = $message;
+						$this->notifications['error'][] = sprintf($message, $field);
 					}
 				}
 			}
@@ -192,6 +235,8 @@ class Mailman
 		// Prepare mail
 		$subject = null;
 		$this->set_mailer_delivery_method();
+
+		$this->set_from();
 
 		$is_html = isset($this->templates['html']);
 		$mailer->IsHTML($is_html);
@@ -229,6 +274,7 @@ class Mailman
 		}
 
 		$this->notifications['success'][] = $this->success_message;
+		$this->data = array();
 		return $this;
 	}
 
@@ -283,7 +329,7 @@ class Mailman
 		$body = ob_get_contents();
 		ob_end_clean();
 
-		$parts = preg_split('#%BODY%#', $body, 2);
+		$parts = preg_split('#%body%#', $body, 2);
 		if (count($parts) == 1) {
 			$body = $parts[0];			
 			$subject = null;
@@ -292,6 +338,24 @@ class Mailman
 		}
 
 		return array(trim($subject), $body);
+	}
+
+	protected function set_from() {
+		if ($ff = $this->from_fields) {
+			if (!isset($this->data[$ff[0]])) {
+				throw new Exception("No field named '{$ff[0]}' to set as sender email address.");
+			}
+
+			if (count($ff) > 1 && !isset($this->data[$ff[1]])) {
+				throw new Exception("No field named '{$ff[1]}' to set as sender name.");
+			}
+
+			if (count($ff) > 1) {
+				$this->mailer->SetFrom($this->data[$ff[0]], $this->data[$ff[1]]);
+			} else {
+				$this->mailer->SetFrom($this->data[$ff[0]]);
+			}			
+		}
 	}
 
 	protected function clear_notifications()

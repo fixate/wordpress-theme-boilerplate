@@ -8,16 +8,8 @@
  */
 global $mailman;
 ?>
-<?php if ($mailman->has_notifications()): ?>
-	<?php foreach ($mailman->notifications() as $type => $messages): ?>
-		<div class="alert alert-<?php echo $type ?>">
-			<?php foreach ($messages as $message): ?>
-				<?php echo $message ?><br>
-			<?php endforeach ?>
-		</div>
-	<?php endforeach ?>
-<?php endif ?>
 
+<?php echo $mailman->render_notifications() ?>
 <h1>Get in touch <i class="icon icon-cross fc-beta fs-kilo"></i></h1>
 <form method="POST" action="<?php echo $mailman->action_path() ?>">
 	<div class="field prl-milli">
