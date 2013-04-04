@@ -21,12 +21,13 @@ if ( function_exists( 'add_theme_support' ) ) {
 require_once 'inc/validation.php';
 require_once 'inc/mailman.php';
 Mailman::wp_bootstrap(array(
-	'to' => array('stan@fixate.it', 'your name'),	
+	'to' => array('stan@fixate.it', 'your name'),
+	'from_fields' => array('mail_email', 'mail_name'),
 	'templates' => array(
 		'html' => THEME_NAME_THEME_BASEPATH.'/inc/templates/contact.html.php',
 		'text' => THEME_NAME_THEME_BASEPATH.'/inc/templates/contact.text.php',
 	),
-	'success_message' => "Your message has been sent! You'll hear back from us soon.",
+	'success_message' => __('Your message has been sent! You\'ll hear back from us soon.', 'fix8'),
 	'validation_messages' => array(
 		'Validation::presence' => '%s cannot be blank.',
 		'Validation::email' => '%s must be a valid email address.',
@@ -35,7 +36,15 @@ Mailman::wp_bootstrap(array(
 		'mail_name' => array('Validation::presence'),
 		'mail_email' => array('Validation::presence', 'Validation::email'),
 		'mail_message' =>  array('Validation::presence' => 'Please enter a message.'),
-	)
+	),
+	// If using SMTP delivery method
+	// 'smtp' => array(
+	// 	'host' => 'your.isp.net',
+	// 	'port' => 25,
+	// 	'auth' => true, // if false or omitted, leave out the following
+	// 	'username' => 'your@username',
+	// 	'password' => 'you know what to do...'
+	// )
 ));
 
 
