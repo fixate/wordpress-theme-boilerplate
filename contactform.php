@@ -1,6 +1,6 @@
 <?php
 /**
- * The template for displaying a "No posts found" message.
+ * The template for displaying a "contact us" form
  *
  * @package WordPress
  * @subpackage Theme_Name

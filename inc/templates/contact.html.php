@@ -1,4 +1,4 @@
-Onine request from <?php echo "{$mail_name} <{$mail_email}>" ?> 
+Online request from <?php echo "{$mail_name} <{$mail_email}>" ?> 
 %body%
 <html>
 <body>
