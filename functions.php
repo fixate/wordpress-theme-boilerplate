@@ -21,7 +21,7 @@ if ( function_exists( 'add_theme_support' ) ) {
 require_once 'inc/validation.php';
 require_once 'inc/mailman.php';
 Mailman::wp_bootstrap(array(
-	'to' => array('stan@fixate.it', 'your name'),
+	'to' => array('your@email.com', 'your name'),
 	'from_fields' => array('mail_email', 'mail_name'),
 	'templates' => array(
 		'html' => THEME_NAME_THEME_BASEPATH.'/inc/templates/contact.html.php',
@@ -32,10 +32,10 @@ Mailman::wp_bootstrap(array(
 		'Validation::presence' => '%s cannot be blank.',
 		'Validation::email' => '%s must be a valid email address.',
 	),
-	'validates' => array(
-		'mail_name' => array('Validation::presence'),
-		'mail_email' => array('Validation::presence', 'Validation::email'),
-		'mail_message' =>  array('Validation::presence' => 'Please enter a message.'),
+	'validates' => array(// ▾ Friendly field name (optional)
+		'mail_name' => array('@Name', 'Validation::presence'),
+		'mail_email' => array('@Email', 'Validation::presence', 'Validation::email'),
+		'mail_message' => array('Validation::presence' => 'Please enter a message.'),
 	),
 	// If using SMTP delivery method
 	// 'smtp' => array(

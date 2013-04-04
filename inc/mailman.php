@@ -205,16 +205,26 @@ class Mailman
 
 		foreach ($this->data as $field => $value) {
 			if (isset($this->validations[$field])) {
+				$field_name = $field;
 				foreach ($this->validations[$field] as $cb => $message) {
+					// Friendly name for field
+					if (is_string($message) && $message[0] == '@') {
+						$field_name = substr($message, 1);		
+						continue;
+					}
+
+					// No message specified
 					if (is_int($cb)) {
 						$cb = $message;
 						$message = $this->get_validation_message($cb);
 					}
 
+
 					# Validate
 					if (!call_user_func_array($cb, array($value))) {
 						$result = false;
-						$this->notifications['error'][] = sprintf($message, $field);
+						$this->notifications['error'][] = sprintf($message, $field_name);
+						break;
 					}
 				}
 			}
@@ -304,6 +314,8 @@ class Mailman
 			array_push($vars, 'use_mailman');
 			return $vars;
 		} add_filter('query_vars', 'mailman_query_vars');
+
+		return $mailman;
 	}
 
 	protected function set_mailer_delivery_method() 
