@@ -1,14 +1,14 @@
 <?php
 
-define( 'THEME_DIR', get_template_directory_uri() );
-define( 'THEME_NAME_THEME_BASEPATH', str_replace('\\', '/', dirname(__FILE__)) );
-define( 'GA_UACODE', false );
+define('THEME_DIR', get_template_directory_uri() );
+define('THEME_NAME_THEME_BASEPATH', str_replace('\\', '/', dirname(__FILE__)) );
+define('GA_UACODE', false );
 
 // Add theme support - must come before init() hook
-if ( function_exists( 'add_theme_support' ) ) {
-	add_theme_support( 'post-thumbnails' );
-	add_theme_support( 'nav_menus' );
-	add_theme_support( 'automatic_feed_links' );
+if ( function_exists('add_theme_support') ) {
+	add_theme_support('post-thumbnails');
+	add_theme_support('nav_menus');
+	add_theme_support('automatic_feed_links');
 }
 
 # Include helper classes
@@ -17,8 +17,9 @@ if ( function_exists( 'add_theme_support' ) ) {
 // require_once 'inc/widgets.php';
 # Include shortcodes
 // require_once 'inc/shortcodes.php';
+
 # Include if using the contact form
-require_once 'inc/validation.php';
+/*require_once 'inc/validation.php';
 require_once 'inc/mailman.php';
 Mailman::wp_bootstrap(array(
 	'to' => array('your@email.com', 'your name'),
@@ -27,7 +28,7 @@ Mailman::wp_bootstrap(array(
 		'html' => THEME_NAME_THEME_BASEPATH.'/inc/templates/contact.html.php',
 		'text' => THEME_NAME_THEME_BASEPATH.'/inc/templates/contact.text.php',
 	),
-	'success_message' => __('Your message has been sent! You\'ll hear back from us soon.', 'fix8'),
+	'success_message' => __('Your message has been sent! You\'ll hear back from us soon.', 'theme_name'),
 	'validation_messages' => array(
 		'Validation::presence' => '%s cannot be blank.',
 		'Validation::email' => '%s must be a valid email address.',
@@ -45,12 +46,12 @@ Mailman::wp_bootstrap(array(
 	// 	'username' => 'your@username',
 	// 	'password' => 'you know what to do...'
 	// )
-));
+));*/
 
 
 // Conditionally include admin functions
-if (is_admin()) {	
-	require_once 'inc/wp-admin/functions.php';	
+if (is_admin()) {
+	require_once 'inc/wp-admin/functions.php';
 }
 
 /* *****************************************************************************
@@ -71,12 +72,12 @@ function theme_name_init() {
 		return;
 
 	// Register Scripts
-	wp_deregister_script( 'jquery' );
-	wp_deregister_script( 'comment-reply' );
-	wp_register_script( 'jquery', 'http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js', false, false, true );
-	wp_register_script( 'comment-reply', ' /wp-includes/js/comment-reply.min.js', array( 'jquery' ), false, true );
+	wp_deregister_script('jquery');
+	wp_deregister_script('comment-reply');
+	wp_register_script('jquery', 'http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js', false, false, true );
+	wp_register_script('comment-reply', ' /wp-includes/js/comment-reply.min.js', array('jquery'), false, true );
 
-} add_action( 'init', 'theme_name_init' );
+} add_action('init', 'theme_name_init');
 
 /**
  * Enqueue scripts and styles for front-end.
@@ -90,12 +91,12 @@ function theme_name_enqueue_scripts_styles() {
 	 * Add JavaScript to pages with the comment form to support sites with
 	 * threaded comments (when in use).
 	 */
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) )
-		wp_enqueue_script( 'comment-reply', '', '', '', 'true' );
+	if ( is_singular() && comments_open() && get_option('thread_comments') )
+		wp_enqueue_script('comment-reply', '', '', '', 'true');
 
-	wp_enqueue_script( 'jquery' );
+	wp_enqueue_script('jquery');
 
-} add_action( 'wp_enqueue_scripts', 'theme_name_enqueue_scripts_styles' );
+} add_action('wp_enqueue_scripts', 'theme_name_enqueue_scripts_styles');
 
 /**
  * Remove junk from head
@@ -124,7 +125,7 @@ remove_action('wp_head', 'adjacent_posts_rel_link_wp_head');
  *
  * @since Theme Name 1.0
  */
-if ( ! function_exists( 'default_primary_nav' ) ) {
+if ( ! function_exists('default_primary_nav') ) {
 	function default_primary_nav() {
 		echo '<ul id="primary-menu" class="primary-menu">';
 		wp_list_pages('title_li=');
@@ -133,7 +134,7 @@ if ( ! function_exists( 'default_primary_nav' ) ) {
 }
 
 
-if ( ! function_exists( 'theme_name_comment' ) ) {
+if ( ! function_exists('theme_name_comment') ) {
 	/**
 	 * Template for comments and pingbacks.
 	 *
@@ -334,8 +335,8 @@ function theme_name_embed_filter( $output, $data, $url ) {
  */
 if (function_exists('register_nav_menus')) {
 	register_nav_menus( array(
-		'primary-menu' => __( 'Primary Navigation', 'theme_name' ),
-		'footer-menu' => __( 'Footer Navigation', 'theme_name' ),
+		'primary-menu' => __('Primary Navigation', 'theme_name'),
+		'footer-menu' => __('Footer Navigation', 'theme_name'),
 	) );
 }
 
@@ -353,7 +354,7 @@ if (function_exists('register_nav_menus')) {
 	register_sidebar(
 		array(
 			'id'            => 'sidebar-top',
-			'name'          => __( 'Sidebar Top', 'theme_name' ),
+			'name'          => __('Sidebar Top', 'theme_name'),
 			'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
 			'after_widget'  => '<div class="hr"></div>',
 			'before_title'  => '<h3 class="widget-title">',
