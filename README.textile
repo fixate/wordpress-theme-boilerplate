@@ -2,7 +2,7 @@ h1. WordPress Boilerplate
 
 This is a simple and robust starting point for developing WordPress themes. This theme contains no styling, and includes a minified jQuery 1.8.3
 
-I recommend using a "styleguide":http://larrybotha.github.com/styleguide/ for a plainly styled CSS boilerplate that includes WordPress defaults.
+We recommend using a "styleguide":http://larrybotha.github.com/styleguide/ for a plainly styled CSS boilerplate that includes WordPress defaults.
 
 h2. Features
 
@@ -19,4 +19,4 @@ h2. Usage
 
 h4. License
 
-MIT: http://larrybotha.mit-license.org/
+MIT: http://fixate.mit-license.org/
