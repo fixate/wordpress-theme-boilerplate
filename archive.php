@@ -19,31 +19,31 @@
 
 get_header(); ?>
 
-<?php if ( have_posts() ) : ?>
+<?php if ( have_posts()) : ?>
 	<h1>
 		<?php
-			if ( is_day() ) :
-				printf( __( 'Daily Archives: %s', 'theme_name' ), '<span>' . get_the_date() . '</span>' );
-			elseif ( is_month() ) :
-				printf( __( 'Monthly Archives: %s', 'theme_name' ), '<span>' . get_the_date( _x( 'F Y', 'monthly archives date format', 'theme_name' ) ) . '</span>' );
-			elseif ( is_year() ) :
-				printf( __( 'Yearly Archives: %s', 'theme_name' ), '<span>' . get_the_date( _x( 'Y', 'yearly archives date format', 'theme_name' ) ) . '</span>' );
+			if ( is_day()) :
+				printf( __('Daily Archives: %s', 'theme_name'), '<span>' . get_the_date() . '</span>');
+			elseif ( is_month()) :
+				printf( __('Monthly Archives: %s', 'theme_name'), '<span>' . get_the_date( _x('F Y', 'monthly archives date format', 'theme_name')) . '</span>');
+			elseif ( is_year()) :
+				printf( __('Yearly Archives: %s', 'theme_name'), '<span>' . get_the_date( _x('Y', 'yearly archives date format', 'theme_name')) . '</span>');
 			else :
-				_e( 'Archives', 'theme_name' );
+				_e('Archives', 'theme_name');
 			endif;
 		?>
 	</h1>
 
-	<?php	while ( have_posts() ) : the_post(); ?>
+	<?php	while ( have_posts()) : the_post(); ?>
 
-		<?php	get_template_part( 'content', get_post_format() ); ?>
+		<?php	get_template_part('content', get_post_format()); ?>
 
 	<?php endwhile; ?>
 
-	<?php get_template_part( 'pagination' ); ?>
+	<?php get_template_part('pagination'); ?>
 
 <?php else : ?>
-	<?php get_template_part( 'content', 'none' ); ?>
+	<?php get_template_part('content', 'none'); ?>
 <?php endif; // have_posts() ?>
 
 <?php get_sidebar(); ?>

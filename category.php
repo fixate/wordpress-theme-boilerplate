@@ -13,23 +13,23 @@
 
 get_header(); ?>
 
-<?php if ( have_posts() ) : ?>
-	<h1><?php printf( __( 'Category Archives: %s', 'twentytwelve' ), '<span>' . single_cat_title( '', false ) . '</span>' ); ?></h1>
+<?php if ( have_posts()) : ?>
+	<h1><?php printf( __('Category Archives: %s', 'twentytwelve'), '<span>' . single_cat_title('', false) . '</span>'); ?></h1>
 
-	<?php if ( category_description() ) : // Show an optional category description ?>
+	<?php if ( category_description()) : // Show an optional category description ?>
 		<div><?php echo category_description(); ?></div>
 	<?php endif; ?>
 
-	<?php	while ( have_posts() ) : the_post(); ?>
+	<?php	while ( have_posts()) : the_post(); ?>
 
-		<?php	get_template_part( 'content', get_post_format() ); ?>
+		<?php	get_template_part('content', get_post_format()); ?>
 
 	<?php endwhile; ?>
 
 	<?php get_template_part('pagination');?>
 
 <?php else : ?>
-	<?php get_template_part( 'content', 'none' ); ?>
+	<?php get_template_part('content', 'none'); ?>
 <?php endif; // have_posts() ?>
 
 <?php get_sidebar(); ?>

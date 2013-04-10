@@ -446,7 +446,7 @@ class phpmailerTest extends PHPUnit_Framework_TestCase
             'test@test.com',
             'test@xn--example.com',
             'test@example.com'
-        );
+       );
         $invalidaddresses = array(
             'first.last@sub.do,com',
             'first\@last@iana.org',
@@ -580,7 +580,7 @@ class phpmailerTest extends PHPUnit_Framework_TestCase
             'first.last@[IPv6:a1:a2:a3:a4:b1:b2:b3:]',
             'first.last@[IPv6::a2:a3:a4:b1:b2:b3:b4]',
             'first.last@[IPv6:a1:a2:a3:a4::b1:b2:b3:b4]'
-        );
+       );
         $goodfails = array();
         foreach ($validaddresses as $address) {
             if (!PHPMailer::ValidateAddress($address)) {
@@ -700,7 +700,7 @@ class phpmailerTest extends PHPUnit_Framework_TestCase
             $t,
             quoted_printable_decode($this->Mail->EncodeQP($t)),
             'Quoted-Printable encoding round-trip failed'
-        );
+       );
         $this->assertEquals($this->Mail->EncodeQP($t), $this->Mail->EncodeQPphp($t), 'Quoted-Printable BC wrapper failed');
     }
 
@@ -804,8 +804,8 @@ EOT;
             'test.png',
             'base64',
             'image/png'
-        )
-        ) {
+       )
+       ) {
             $this->assertTrue(false, $this->Mail->ErrorInfo);
             return;
         }
@@ -833,8 +833,8 @@ EOT;
             'test.png',
             'base64',
             'image/png'
-        )
-        ) {
+       )
+       ) {
             $this->assertTrue(false, $this->Mail->ErrorInfo);
             return;
         }
@@ -1073,23 +1073,23 @@ EOT;
             '=A1Hola!_Se=F1or!',
             $this->Mail->EncodeQ("\xa1Hola! Se\xf1or!", 'text'),
             'Q Encoding (text) failed'
-        );
+       );
         $this->assertEquals(
             '=A1Hola!_Se=F1or!',
             $this->Mail->EncodeQ("\xa1Hola! Se\xf1or!", 'comment'),
             'Q Encoding (comment) failed'
-        );
+       );
         $this->assertEquals(
             '=A1Hola!_Se=F1or!',
             $this->Mail->EncodeQ("\xa1Hola! Se\xf1or!", 'phrase'),
             'Q Encoding (phrase) failed'
-        );
+       );
         $this->Mail->CharSet = 'UTF-8';
         $this->assertEquals(
             '=C2=A1Hola!_Se=C3=B1or!',
             $this->Mail->EncodeQ("\xc2\xa1Hola! Se\xc3\xb1or!", 'text'),
             'Q Encoding (text) failed'
-        );
+       );
     }
 
     /**
@@ -1108,7 +1108,7 @@ EOT;
             'organizationalUnitName' => 'PHPMailer',
             'commonName' => 'PHPMailer Test',
             'emailAddress' => 'phpmailer@example.com'
-        );
+       );
         $password = 'password';
         $certfile = 'certfile.txt';
         $keyfile = 'keyfile.txt';
@@ -1130,7 +1130,7 @@ EOT;
             $certfile,
             $keyfile,
             $password
-        );
+       );
         $this->assertTrue($this->Mail->Send(), 'S/MIME signing failed');
         unlink($certfile);
         unlink($keyfile);

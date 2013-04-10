@@ -11,12 +11,12 @@
 ?>
 <aside>
 
-<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('Sidebar') ) : ?>
+<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('Sidebar')) : ?>
 
 	<section class="widget">
 		<h4 class="widgettitle"><?php _e('Pages','theme_name'); ?></h4>
 		<ul>
-			<?php wp_list_pages('title_li=' ); ?>
+			<?php wp_list_pages('title_li='); ?>
 		</ul>
 	</section>
 

@@ -29,7 +29,7 @@
 		<link rel="SHORTCUT ICON" href="<?php echo THEME_DIR; ?>/img/favicon.ico" type="image/x-icon" />
 		<link rel="logo" type="image/svg" href="<?php echo THEME_DIR; ?>/img/logo.svg"/>
 		<!--[if ! lte IE 7]><!-->
-		<link rel="stylesheet" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
+		<link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>" />
 		<!--<![endif]-->
 
 		<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="<?php bloginfo('rss2_url'); ?>" />

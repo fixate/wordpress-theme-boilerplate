@@ -519,7 +519,7 @@ function tln_fixatts($tagname,
 				 $rm_attnames,
 				 $bad_attvals,
 				 $add_attr_to_tag
-				 ){
+				){
 	$me = 'tln_fixatts';
 	while (list($attname, $attvalue) = each($attary)){
 		/**
@@ -597,7 +597,7 @@ function tln_sanitize($body,
 				  $rm_attnames,
 				  $bad_attvals,
 				  $add_attr_to_tag
-				  )
+				 )
 {
 	$me = 'tln_sanitize';
 	/**

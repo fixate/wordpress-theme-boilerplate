@@ -237,7 +237,7 @@ NOTE: WE HAVE A NEW LANGUAGE VARIABLE FOR DIGITALLY SIGNED S/MIME EMAILS. IF YOU
     `$basedir` is the fully qualified path
   * fixed `MsgHTML()` function:
     - Embedded Images where images are specified by `<protocol>://` will not be altered or embedded
-  * fixed the return value of SMTP exit code ( pclose )
+  * fixed the return value of SMTP exit code ( pclose)
   * addressed issue of multibyte characters in subject line and truncating
   * added ability to have user specified Message ID
     (default is still that PHPMailer create a unique Message ID)

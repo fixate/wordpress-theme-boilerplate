@@ -244,7 +244,7 @@ class Browser
       'version'   => $version,
       'platform'  => $platform,
       'pattern'   => $pattern
-    );    
+   );    
   }
 }
 
