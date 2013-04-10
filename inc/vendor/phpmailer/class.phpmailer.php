@@ -35,7 +35,7 @@
  * @license http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License
  */
 
-if (version_compare(PHP_VERSION, '5.0.0', '<') ) exit("Sorry, this version of PHPMailer will only run on PHP version 5 or greater!\n");
+if (version_compare(PHP_VERSION, '5.0.0', '<')) exit("Sorry, this version of PHPMailer will only run on PHP version 5 or greater!\n");
 
 /**
  * PHP email creation and transport class
@@ -517,7 +517,7 @@ class PHPMailer {
    * @return bool
    */
   private function mail_passthru($to, $subject, $body, $header, $params) {
-    if ( ini_get('safe_mode') || !($this->UseSendmailOptions) ) {
+    if ( ini_get('safe_mode') || !($this->UseSendmailOptions)) {
         $rt = @mail($to, $this->EncodeHeader($this->SecureHeader($subject)), $body, $header);
     } else {
         $rt = @mail($to, $this->EncodeHeader($this->SecureHeader($subject)), $body, $header, $params);
@@ -1028,7 +1028,7 @@ class PHPMailer {
     }
 
 
-    if (count($bad_rcpt) > 0 ) { //Create error message for any bad addresses
+    if (count($bad_rcpt) > 0) { //Create error message for any bad addresses
       $badaddresses = implode(', ', $bad_rcpt);
       throw new phpmailerException($this->Lang('recipients_failed') . $badaddresses);
     }
@@ -1155,7 +1155,7 @@ class PHPMailer {
       'smtp_connect_failed'  => 'SMTP Connect() failed.',
       'smtp_error'           => 'SMTP server error: ',
       'variable_set'         => 'Cannot set or reset variable: '
-    );
+   );
     //Overwrite language-specific strings. This way we'll never have missing translations - no more "language string failed to load"!
     $l = true;
     if ($langcode != 'en') { //There is no English translation file
@@ -1735,11 +1735,11 @@ class PHPMailer {
    */
   public function AddAttachment($path, $name = '', $encoding = 'base64', $type = 'application/octet-stream') {
     try {
-      if ( !@is_file($path) ) {
+      if ( !@is_file($path)) {
         throw new phpmailerException($this->Lang('file_access') . $path, self::STOP_CONTINUE);
       }
       $filename = basename($path);
-      if ( $name == '' ) {
+      if ($name == '') {
         $name = $filename;
       }
 
@@ -1752,7 +1752,7 @@ class PHPMailer {
         5 => false,  // isStringAttachment
         6 => 'attachment',
         7 => 0
-      );
+     );
 
     } catch (phpmailerException $e) {
       $this->SetError($e->getMessage());
@@ -1762,7 +1762,7 @@ class PHPMailer {
       if ($this->SMTPDebug) {
         $this->edebug($e->getMessage()."\n");
       }
-      if ( $e->getCode() == self::STOP_CRITICAL ) {
+      if ($e->getCode() == self::STOP_CRITICAL) {
         return false;
       }
     }
@@ -1814,7 +1814,7 @@ class PHPMailer {
         $type        = $attachment[4];
         $disposition = $attachment[6];
         $cid         = $attachment[7];
-        if ( $disposition == 'inline' && isset($cidUniq[$cid]) ) { continue; }
+        if ($disposition == 'inline' && isset($cidUniq[$cid])) { continue; }
         $cidUniq[$cid] = true;
 
         $mime[] = sprintf("--%s%s", $boundary, $this->LE);
@@ -2135,7 +2135,7 @@ class PHPMailer {
       5 => true,  // isStringAttachment
       6 => 'attachment',
       7 => 0
-    );
+   );
   }
 
   /**
@@ -2153,13 +2153,13 @@ class PHPMailer {
    */
   public function AddEmbeddedImage($path, $cid, $name = '', $encoding = 'base64', $type = 'application/octet-stream') {
 
-    if ( !@is_file($path) ) {
+    if ( !@is_file($path)) {
       $this->SetError($this->Lang('file_access') . $path);
       return false;
     }
 
     $filename = basename($path);
-    if ( $name == '' ) {
+    if ($name == '') {
       $name = $filename;
     }
 
@@ -2173,7 +2173,7 @@ class PHPMailer {
       5 => false,  // isStringAttachment
       6 => 'inline',
       7 => $cid
-    );
+   );
     return true;
   }
 
@@ -2202,7 +2202,7 @@ class PHPMailer {
       5 => true,  // isStringAttachment
       6 => 'inline',
       7 => $cid
-    );
+   );
     return true;
   }
 
@@ -2452,7 +2452,7 @@ class PHPMailer {
           $mimeType  = self::_mime_types($ext);
           if ( strlen($basedir) > 1 && substr($basedir, -1) != '/') { $basedir .= '/'; }
           if ( strlen($directory) > 1 && substr($directory, -1) != '/') { $directory .= '/'; }
-          if ( $this->AddEmbeddedImage($basedir.$directory.$filename, md5($url), $filename, 'base64', $mimeType) ) {
+          if ($this->AddEmbeddedImage($basedir.$directory.$filename, md5($url), $filename, 'base64', $mimeType)) {
             $message = preg_replace("/".$images[1][$i]."=[\"']".preg_quote($url, '/')."[\"']/Ui", $images[1][$i]."=\"".$cid."\"", $message);
           }
         }
@@ -2577,7 +2577,7 @@ class PHPMailer {
       'rv'    =>  'video/vnd.rn-realvideo',
       'avi'   =>  'video/x-msvideo',
       'movie' =>  'video/x-sgi-movie'
-    );
+   );
     return (!isset($mimes[strtolower($ext)])) ? 'application/octet-stream' : $mimes[strtolower($ext)];
   }
 
@@ -2597,7 +2597,7 @@ class PHPMailer {
    */
   public function set($name, $value = '') {
     try {
-      if (isset($this->$name) ) {
+      if (isset($this->$name)) {
         $this->$name = $value;
       } else {
         throw new phpmailerException($this->Lang('variable_set') . $name, self::STOP_CRITICAL);
@@ -2646,7 +2646,7 @@ class PHPMailer {
     $line = '';
     for ($i = 0; $i < strlen($txt); $i++) {
       $ord = ord($txt[$i]);
-      if ( ((0x21 <= $ord) && ($ord <= 0x3A)) || $ord == 0x3C || ((0x3E <= $ord) && ($ord <= 0x7E)) ) {
+      if (((0x21 <= $ord) && ($ord <= 0x3A)) || $ord == 0x3C || ((0x3E <= $ord) && ($ord <= 0x7E))) {
         $line .= $txt[$i];
       } else {
         $line .= "=".sprintf("%02X", $ord);

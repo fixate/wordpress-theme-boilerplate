@@ -244,7 +244,7 @@ class POP3 {
         'error' => "Failed to connect to server $host on port $port",
         'errno' => $errno,
         'errstr' => $errstr
-      );
+     );
 
       if ($this->do_debug >= 1) {
         $this->displayErrors();
@@ -371,7 +371,7 @@ class POP3 {
         'error' => "Server reported an error: $string",
         'errno' => 0,
         'errstr' => ''
-      );
+     );
 
       if ($this->do_debug >= 1) {
         $this->displayErrors();
@@ -411,7 +411,7 @@ class POP3 {
       'error' => "Connecting to the POP3 server raised a PHP warning: ",
       'errno' => $errno,
       'errstr' => $errstr
-    );
+   );
   }
 
   //  End of class

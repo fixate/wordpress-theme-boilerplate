@@ -26,7 +26,7 @@
 			?>
 
 			<div>
-				<?php bloginfo(); ?> &copy; <?php echo date( 'Y' ); ?> | Powered by <a href="http://wordpress.org">WordPress</a>
+				<?php bloginfo(); ?> &copy; <?php echo date('Y'); ?> | Powered by <a href="http://wordpress.org">WordPress</a>
 			</div>
 
 		</footer><!-- .area-footer -->

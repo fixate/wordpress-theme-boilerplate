@@ -4,7 +4,7 @@
   * by matt.sturdy@gmail.com
   */
   require_once("../class.phpmailer.php");
-  
+
   //This class from http://www.chuggnutt.com/html2text
   require_once('../extras/class.html2text.php');
 
@@ -16,29 +16,29 @@
   $CFG['smtp_password']     = 'yourpassword';
   $CFG['smtp_secure']       = 'None';
 
-  $from_name             = ( isset($_POST['From_Name'])) ? $_POST['From_Name'] : ''; 
-  $from_email            = ( isset($_POST['From_Email'])) ? $_POST['From_Email'] : ''; 
-  $to_name               = ( isset($_POST['To_Name'])) ? $_POST['To_Name'] : ''; 
-  $to_email              = ( isset($_POST['To_Email'])) ? $_POST['To_Email'] : ''; 
-  $cc_email              = ( isset($_POST['cc_Email'])) ? $_POST['cc_Email'] : ''; 
-  $bcc_email             = ( isset($_POST['bcc_Email'])) ? $_POST['bcc_Email'] : ''; 
-  $subject               = ( isset($_POST['Subject'])) ? $_POST['Subject'] : ''; 
-  $message               = ( isset($_POST['Message'])) ? $_POST['Message'] : ''; 
-  $test_type             = ( isset($_POST['test_type'])) ? $_POST['test_type'] : ''; 
-  $smtp_debug            = ( isset($_POST['smtp_debug'])) ? $_POST['smtp_debug'] : $CFG['smtp_debug']; 
-  $smtp_server           = ( isset($_POST['smtp_server'])) ? $_POST['smtp_server'] : $CFG['smtp_server']; 
-  $smtp_port             = ( isset($_POST['smtp_port'])) ? $_POST['smtp_port'] : $CFG['smtp_port']; 
-  $smtp_secure           = strtolower(( isset($_POST['smtp_secure'])) ? $_POST['smtp_secure'] : $CFG['smtp_secure']); 
-  $smtp_authenticate     = ( isset($_POST['smtp_authenticate'])) ? $_POST['smtp_authenticate'] : $CFG['smtp_authenticate']; 
-  $authenticate_password = ( isset($_POST['authenticate_password'])) ? $_POST['authenticate_password'] : $CFG['smtp_password']; 
-  $authenticate_username = ( isset($_POST['authenticate_username'])) ? $_POST['authenticate_username'] : $CFG['smtp_username']; 
+  $from_name             = ( isset($_POST['From_Name'])) ? $_POST['From_Name'] : '';
+  $from_email            = ( isset($_POST['From_Email'])) ? $_POST['From_Email'] : '';
+  $to_name               = ( isset($_POST['To_Name'])) ? $_POST['To_Name'] : '';
+  $to_email              = ( isset($_POST['To_Email'])) ? $_POST['To_Email'] : '';
+  $cc_email              = ( isset($_POST['cc_Email'])) ? $_POST['cc_Email'] : '';
+  $bcc_email             = ( isset($_POST['bcc_Email'])) ? $_POST['bcc_Email'] : '';
+  $subject               = ( isset($_POST['Subject'])) ? $_POST['Subject'] : '';
+  $message               = ( isset($_POST['Message'])) ? $_POST['Message'] : '';
+  $test_type             = ( isset($_POST['test_type'])) ? $_POST['test_type'] : '';
+  $smtp_debug            = ( isset($_POST['smtp_debug'])) ? $_POST['smtp_debug'] : $CFG['smtp_debug'];
+  $smtp_server           = ( isset($_POST['smtp_server'])) ? $_POST['smtp_server'] : $CFG['smtp_server'];
+  $smtp_port             = ( isset($_POST['smtp_port'])) ? $_POST['smtp_port'] : $CFG['smtp_port'];
+  $smtp_secure           = strtolower(( isset($_POST['smtp_secure'])) ? $_POST['smtp_secure'] : $CFG['smtp_secure']);
+  $smtp_authenticate     = ( isset($_POST['smtp_authenticate'])) ? $_POST['smtp_authenticate'] : $CFG['smtp_authenticate'];
+  $authenticate_password = ( isset($_POST['authenticate_password'])) ? $_POST['authenticate_password'] : $CFG['smtp_password'];
+  $authenticate_username = ( isset($_POST['authenticate_username'])) ? $_POST['authenticate_username'] : $CFG['smtp_username'];
 
 
   // storing all status output from the script to be shown to the user later
   $results_messages = array();
   $errorMsg = array();
 
-  // $example_code represents the "final code" that we're using, and will 
+  // $example_code represents the "final code" that we're using, and will
   // be shown to the user at the end.
   $example_code  = "\nrequire_once(\"../class.phpmailer.php\");";
   $example_code .= "\nrequire_once(\"../extras/class.html2text.php\");";
@@ -50,7 +50,7 @@
       return $errorMsg;
     }
   }
-  
+
   $example_code .= "\n\nclass phpmailerAppException extends Exception {";
   $example_code .= "\n  public function errorMessage() {";
   $example_code .= "\n    \$errorMsg = \$this->getMessage();";
@@ -59,14 +59,14 @@
   $example_code .= "\n}";
 
 
-  if ( isset($_POST["submit"]) && $_POST['submit'] == "Submit" ) {
+  if ( isset($_POST["submit"]) && $_POST['submit'] == "Submit") {
 
     try {
       $to = $_POST['To_Email'];
       if(filter_var($to, FILTER_VALIDATE_EMAIL) === FALSE) {
         throw new phpmailerAppException("Email address " . $to . " is invalid -- aborting!<br />");
       }
-    } 
+    }
     catch (phpmailerAppException $e) {
       $results_messages[] = $e->errorMessage();
     }
@@ -84,7 +84,7 @@
     $mail = new PHPMailer();
     $example_code .= "\n\n\$mail = new PHPMailer();";
 
-    if ( $_POST['test_type'] == "smtp" ) {
+    if ($_POST['test_type'] == "smtp") {
       $mail->IsSMTP();  // telling the class to use SMTP
       $mail->SMTPDebug  = $_POST['smtp_debug'];
       $mail->Host       = $_POST['smtp_server'];           // SMTP server
@@ -109,21 +109,21 @@
         $example_code .= "\n\$mail->Password   = \"".$_POST['authenticate_password']."\";";
       }
 
-    } 
-    elseif ( $_POST['test_type'] == "mail" ) {
+    }
+    elseif ($_POST['test_type'] == "mail") {
       $mail->IsMail();      // telling the class to use PHP's Mail()
       $example_code .= "\n\$mail->IsMail();";
-    } 
-    elseif ( $_POST['test_type'] == "sendmail" ) {
+    }
+    elseif ($_POST['test_type'] == "sendmail") {
       $mail->IsSendmail();  // telling the class to use Sendmail
       $example_code .= "\n\$mail->IsSendmail();";
-    } 
-    elseif ( $_POST['test_type'] == "qmail" ) {
+    }
+    elseif ($_POST['test_type'] == "qmail") {
       $mail->IsQmail();     // telling the class to use Qmail
       $example_code .= "\n\$mail->IsQmail();";
     }
 
-    if ( $_POST['From_Name'] != '' ) {
+    if ($_POST['From_Name'] != '') {
       $mail->AddReplyTo($_POST['From_Email'],$_POST['From_Name']);
       $mail->From       = $_POST['From_Email'];
       $mail->FromName   = $_POST['From_Name'];
@@ -131,27 +131,27 @@
       $example_code .= "\n\$mail->AddReplyTo(\"".$_POST['From_Email']."\",\"".$_POST['From_Name']."\");";
       $example_code .= "\n\$mail->From       = \"".$_POST['From_Email']."\");";
       $example_code .= "\n\$mail->FromName   = \"".$_POST['From_Name']."\");";
-    } 
+    }
     else {
       $mail->AddReplyTo($_POST['From_Email']);
       $mail->From       = $_POST['From_Email'];
       $mail->FromName   = $_POST['From_Email'];
-      
+
       $example_code .= "\n\$mail->AddReplyTo(\"".$_POST['From_Email']."\");";
       $example_code .= "\n\$mail->From       = \"".$_POST['From_Email']."\";";
       $example_code .= "\n\$mail->FromName   = \"".$_POST['From_Email']."\";";
     }
 
-    if ( $_POST['To_Name'] != '' ) {
+    if ($_POST['To_Name'] != '') {
       $mail->AddAddress($to,$_POST['To_Name']);
       $example_code .= "\n\$mail->AddAddress(\"$to\",\"".$_POST['To_Name']."\");";
-    } 
+    }
     else {
       $mail->AddAddress($to);
       $example_code .= "\n\$mail->AddAddress(\"$to\");";
     }
 
-    if ( $_POST['bcc_Email'] != '' ) {
+    if ($_POST['bcc_Email'] != '') {
       $indiBCC = explode(" ", $_POST['bcc_Email']);
       foreach ($indiBCC as $key => $value) {
         $mail->AddBCC($value);
@@ -159,7 +159,7 @@
       }
     }
 
-    if ( $_POST['cc_Email'] != '' ) {
+    if ($_POST['cc_Email'] != '') {
       $indiCC = explode(" ", $_POST['cc_Email']);
       foreach ($indiCC as $key => $value) {
         $mail->AddCC($value);
@@ -170,13 +170,13 @@
     $mail->Subject  = $_POST['Subject'] . ' (PHPMailer test using ' . strtoupper($_POST['test_type']) . ')';
     $example_code .= "\n\$mail->Subject  = \"".$_POST['Subject'].'(PHPMailer test using ' . strtoupper($_POST['test_type']) . ')";';
 
-    if ( $_POST['Message'] == '' ) {
+    if ($_POST['Message'] == '') {
       $body = file_get_contents('contents.html');
-    } 
+    }
     else {
       $body = $_POST['Message'];
     }
-    
+
     $example_code .= "\n\$body = \"".$body.'";';
 
     $mail->WordWrap = 80; // set word wrap
@@ -199,10 +199,10 @@
     $example_code .= "\n\$mail->AddAttachment(\"images/phpmailer.gif\", \"phpmailer.gif\");  // optional name";
 
     try {
-      if ( !$mail->Send() ) {
+      if ( !$mail->Send()) {
         $error = "Unable to send to: " . $to . "<br />";
         throw new phpmailerAppException($error);
-      } 
+      }
       else {
         $results_messages[] = "Message has been sent using " . strtoupper($_POST["test_type"]);
       }
@@ -211,7 +211,7 @@
       $errorMsg[] = $e->errorMessage();
     }
 
-    if ( count($errorMsg) > 0 ) {
+    if ( count($errorMsg) > 0) {
       foreach ($errorMsg as $key => $value) {
         $thisError = $key + 1;
         $results_messages[] = $thisError . ': ' . $value;
@@ -219,7 +219,7 @@
     }
 
     $example_code .= "\n\ntry {";
-    $example_code .= "\n  if ( !\$mail->Send() ) {";
+    $example_code .= "\n  if ( !\$mail->Send()) {";
     $example_code .= "\n    \$error = \"Unable to send to: \" . \$to . \"<br />\";";
     $example_code .= "\n    throw new phpmailerAppException(\$error);";
     $example_code .= "\n  } ";
@@ -231,7 +231,7 @@
     $example_code .= "\n  \$errorMsg[] = \$e->errorMessage();";
     $example_code .= "\n}";
     $example_code .= "\n";
-    $example_code .= "\nif ( count(\$errorMsg) > 0 ) {";
+    $example_code .= "\nif ( count(\$errorMsg) > 0) {";
     $example_code .= "\n  foreach (\$errorMsg as \$key => \$value) {";
     $example_code .= "\n    \$thisError = \$key + 1;";
     $example_code .= "\n    \$results_messages[] = \$thisError . \': \' . \$value;";
@@ -256,13 +256,13 @@
       }
       table {
         margin:0 auto;
-        border-spacing: 0; 
-        border-collapse: collapse; 
+        border-spacing: 0;
+        border-collapse: collapse;
       }
       table.column {
-        border-collapse: collapse; 
-        background-color: #FFFFFF; 
-        padding: 0.5em; 
+        border-collapse: collapse;
+        background-color: #FFFFFF;
+        padding: 0.5em;
         width: 35em;
       }
       td {
@@ -298,12 +298,12 @@
         font-size: 1.1em;
       }
       div.column-left {
-        float:left; 
+        float:left;
         width:45em;
         height:31em;
       }
       div.column-right {
-        display:inline; 
+        display:inline;
         width:45em;
         max-height:31em;
       }
@@ -367,9 +367,9 @@
   </head>
   <body>
     <?php
-      if ( substr(phpversion(),0,1) < 5 ) { 
+      if ( substr(phpversion(),0,1) < 5) {
         echo 'Current PHP version: ' . phpversion() . "<br />";
-        echo exit("ERROR: Wrong PHP version. Must be PHP 5 or above."); 
+        echo exit("ERROR: Wrong PHP version. Must be PHP 5 or above.");
       }
 
       if (count($results_messages) > 0) {
@@ -470,19 +470,19 @@
                 <td class="colrite">
                   <div class="radio">
                     <label for="radio-mail">Mail()</label>
-                    <input class="radio" type="radio" name="test_type" value="mail" id="radio-mail" onclick="showHideDiv(this.value, 'smtp-options-table');" <?php echo ( $test_type == 'mail') ? 'checked' : ''; ?> required>
+                    <input class="radio" type="radio" name="test_type" value="mail" id="radio-mail" onclick="showHideDiv(this.value, 'smtp-options-table');" <?php echo ($test_type == 'mail') ? 'checked' : ''; ?> required>
                   </div>
                   <div class="radio">
                     <label for="radio-sendmail">Sendmail</label>
-                    <input class="radio" type="radio" name="test_type" value="sendmail" id="radio-sendmail" onclick="showHideDiv(this.value, 'smtp-options-table');" <?php echo ( $test_type == 'sendmail') ? 'checked' : ''; ?> required>
+                    <input class="radio" type="radio" name="test_type" value="sendmail" id="radio-sendmail" onclick="showHideDiv(this.value, 'smtp-options-table');" <?php echo ($test_type == 'sendmail') ? 'checked' : ''; ?> required>
                   </div>
                   <div class="radio">
                     <label for="radio-qmail">Qmail</label>
-                    <input class="radio" type="radio" name="test_type" value="qmail" id="radio-qmail" onclick="showHideDiv(this.value, 'smtp-options-table');" <?php echo ( $test_type == 'qmail') ? 'checked' : ''; ?> required>
+                    <input class="radio" type="radio" name="test_type" value="qmail" id="radio-qmail" onclick="showHideDiv(this.value, 'smtp-options-table');" <?php echo ($test_type == 'qmail') ? 'checked' : ''; ?> required>
                     </div>
                   <div class="radio">
                     <label for="radio-smtp">SMTP</label>
-                    <input class="radio" type="radio" name="test_type" value="smtp" id="radio-smtp" onclick="showHideDiv(this.value, 'smtp-options-table');" <?php echo ( $test_type == 'smtp') ? 'checked' : ''; ?> required>
+                    <input class="radio" type="radio" name="test_type" value="smtp" id="radio-smtp" onclick="showHideDiv(this.value, 'smtp-options-table');" <?php echo ($test_type == 'smtp') ? 'checked' : ''; ?> required>
                   </div>
                 </td>
               </tr>
@@ -494,9 +494,9 @@
                   <td class="colleft"><label for="smtp_debug">SMTP Debug ?</label></td>
                   <td class="colrite">
                     <select size="1" id="smtp_debug" name="smtp_debug">
-                      <option <?php echo ( $smtp_debug == '0') ? 'selected' : ''; ?> value="0">0 - Disabled</option>
-                      <option <?php echo ( $smtp_debug == '1') ? 'selected' : ''; ?> value="1">1 - Errors and Messages</option>
-                      <option <?php echo ( $smtp_debug == '2') ? 'selected' : ''; ?> value="2">2 - Messages only</option>
+                      <option <?php echo ($smtp_debug == '0') ? 'selected' : ''; ?> value="0">0 - Disabled</option>
+                      <option <?php echo ($smtp_debug == '1') ? 'selected' : ''; ?> value="1">1 - Errors and Messages</option>
+                      <option <?php echo ($smtp_debug == '2') ? 'selected' : ''; ?> value="2">2 - Messages only</option>
                     </select>
                   </td>
                 </tr>
@@ -516,9 +516,9 @@
                   <td class="colleft" ><label for="smtp_secure">SMTP Security</label></td>
                   <td>
                     <select size="1" name="smtp_secure" id="smtp_secure">
-                      <option <?php echo ( $smtp_secure == 'none') ? 'selected' : ''?>>None</option>
-                      <option <?php echo ( $smtp_secure == 'tls')  ? 'selected' : ''?>>TLS</option>
-                      <option <?php echo ( $smtp_secure == 'ssl')  ? 'selected' : ''?>>SSL</option>
+                      <option <?php echo ($smtp_secure == 'none') ? 'selected' : ''?>>None</option>
+                      <option <?php echo ($smtp_secure == 'tls')  ? 'selected' : ''?>>TLS</option>
+                      <option <?php echo ($smtp_secure == 'ssl')  ? 'selected' : ''?>>SSL</option>
                     </select>
                   </td>
                 </tr>
@@ -542,7 +542,7 @@
                 </tr>
               </table>
             </div>
-          </fieldset> 
+          </fieldset>
         </div>
         <br style="clear:both;">
         <div style="margin-left:2em; margin-bottom:5em; float:left;">
@@ -550,7 +550,7 @@
             <input type="submit" value="Submit" name="submit">
           </div>
           <?php echo 'Current PHP version: ' . phpversion(); ?>
-        </div>      
+        </div>
       </div>
     </form>
   </body>

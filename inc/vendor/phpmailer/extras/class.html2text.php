@@ -79,7 +79,7 @@ class html2text
         '/(<tr[^>]*>|<\/tr>)/i',                 // <tr> and </tr>
         '/<td[^>]*>(.*?)<\/td>/i',               // <td> and </td>
         '/<span class="_html2text_ignore">.+?<\/span>/i'  // <span class="_html2text_ignore">...</span>
-    );
+   );
 
     /**
      *  List of pattern replacements corresponding to patterns searched.
@@ -108,7 +108,7 @@ class html2text
         "\n",                                   // <tr> and </tr>
         "\t\t\\1\n",                            // <td> and </td>
         ""                                      // <span class="_html2text_ignore">...</span>
-    );
+   );
 
     /**
      *  List of preg* regular expression patterns to search for,
@@ -135,7 +135,7 @@ class html2text
         '/&(euro|#8364);/i',                     // Euro sign
         '/&(amp|#38);/i',                        // Ampersand: see _converter()
         '/[ ]{2,}/',                             // Runs of spaces, post-handling
-    );
+   );
 
     /**
      *  List of pattern replacements corresponding to patterns searched.
@@ -160,7 +160,7 @@ class html2text
         'EUR',                                  // Euro sign. € ?
         '|+|amp|+|',                            // Ampersand: see _converter()
         ' ',                                    // Runs of spaces, post-handling
-    );
+   );
 
     /**
      *  List of preg* regular expression patterns to search for
@@ -175,7 +175,7 @@ class html2text
         '/<(b)( [^>]*)?>(.*?)<\/b>/i',                         // <b>
         '/<(strong)( [^>]*)?>(.*?)<\/strong>/i',               // <strong>
         '/<(th)( [^>]*)?>(.*?)<\/th>/i',                       // <th> and </th>
-    );
+   );
 
     /**
      *  List of preg* regular expression patterns to search for in PRE body,
@@ -191,7 +191,7 @@ class html2text
         '/ /',
         '/<pre[^>]*>/',
         '/<\/pre>/'
-    );
+   );
 
     /**
      *  List of pattern replacements corresponding to patterns searched for PRE body.
@@ -206,7 +206,7 @@ class html2text
         '&nbsp;',
         '',
         ''
-    );
+   );
 
     /**
      *  Contains a list of HTML tags to allow in the resulting text.
@@ -262,7 +262,7 @@ class html2text
         //  Set this value to 0 (or less) to ignore word wrapping
         //  and not constrain text to a fixed-width column.
         'width' => 70,
-    );
+   );
 
 
     /**
@@ -278,11 +278,11 @@ class html2text
      *  @access public
      *  @return void
      */
-    public function __construct( $source = '', $from_file = false, $options = array() )
+    public function __construct($source = '', $from_file = false, $options = array())
     {
         $this->_options = array_merge($this->_options, $options);
 
-        if ( !empty($source) ) {
+        if ( !empty($source)) {
             $this->set_html($source, $from_file);
         }
 
@@ -297,9 +297,9 @@ class html2text
      *  @access public
      *  @return void
      */
-    public function set_html( $source, $from_file = false )
+    public function set_html($source, $from_file = false)
     {
-        if ( $from_file && file_exists($source) ) {
+        if ($from_file && file_exists($source)) {
             $this->html = file_get_contents($source);
         }
         else
@@ -316,7 +316,7 @@ class html2text
      */
     public function get_text()
     {
-        if ( !$this->_converted ) {
+        if ( !$this->_converted) {
             $this->_convert();
         }
 
@@ -354,9 +354,9 @@ class html2text
      *  @access public
      *  @return void
      */
-    public function set_allowed_tags( $allowed_tags = '' )
+    public function set_allowed_tags($allowed_tags = '')
     {
-        if ( !empty($allowed_tags) ) {
+        if ( !empty($allowed_tags)) {
             $this->allowed_tags = $allowed_tags;
         }
     }
@@ -367,10 +367,10 @@ class html2text
      *  @access public
      *  @return void
      */
-    public function set_base_url( $url = '' )
+    public function set_base_url($url = '')
     {
-        if ( empty($url) ) {
-            if ( !empty($_SERVER['HTTP_HOST']) ) {
+        if ( empty($url)) {
+            if ( !empty($_SERVER['HTTP_HOST'])) {
                 $this->url = 'http://' . $_SERVER['HTTP_HOST'];
             } else {
                 $this->url = '';
@@ -378,7 +378,7 @@ class html2text
         } else {
             // Strip any trailing slashes for consistency (relative
             // URLs may already start with a slash like "/file.html")
-            if ( substr($url, -1) == '/' ) {
+            if ( substr($url, -1) == '/') {
                 $url = substr($url, 0, -1);
             }
             $this->url = $url;
@@ -467,7 +467,7 @@ class html2text
         // Wrap the text to a readable format
         // for PHP versions >= 4.0.2. Default width is 75
         // If width is 0 or less, don't wrap the text.
-        if ( $this->_options['width'] > 0 ) {
+        if ($this->_options['width'] > 0) {
             $text = wordwrap($text, $this->_options['width']);
         }
     }
@@ -485,7 +485,7 @@ class html2text
      *  @access private
      *  @return string
      */
-    private function _build_link_list( $link, $display, $link_override = null)
+    private function _build_link_list($link, $display, $link_override = null)
     {
         $link_method = ($link_override) ? $link_override : $this->_options['do_links'];
         if ($link_method == 'none')

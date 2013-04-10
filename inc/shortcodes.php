@@ -17,7 +17,7 @@ function mp_shortcode_loop($atts, $content = null) {
               'name' => '',
               'template' => 'loop',
               'query' => 'post_type=post'
-            ), $atts));              
+           ), $atts));              
 
   global $wp_query;
   $old_wp = $wp_query;

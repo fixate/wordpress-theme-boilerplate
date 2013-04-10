@@ -1,11 +1,11 @@
 <?php
 
-define('THEME_DIR', get_template_directory_uri() );
-define('THEME_NAME_THEME_BASEPATH', str_replace('\\', '/', dirname(__FILE__)) );
-define('GA_UACODE', false );
+define('THEME_DIR', get_template_directory_uri());
+define('THEME_NAME_THEME_BASEPATH', str_replace('\\', '/', dirname(__FILE__)));
+define('GA_UACODE', false);
 
 // Add theme support - must come before init() hook
-if ( function_exists('add_theme_support') ) {
+if ( function_exists('add_theme_support')) {
 	add_theme_support('post-thumbnails');
 	add_theme_support('nav_menus');
 	add_theme_support('automatic_feed_links');
@@ -45,7 +45,7 @@ Mailman::wp_bootstrap(array(
 	// 	'auth' => true, // if false or omitted, leave out the following
 	// 	'username' => 'your@username',
 	// 	'password' => 'you know what to do...'
-	// )
+	//)
 ));*/
 
 
@@ -74,8 +74,8 @@ function theme_name_init() {
 	// Register Scripts
 	wp_deregister_script('jquery');
 	wp_deregister_script('comment-reply');
-	wp_register_script('jquery', 'http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js', false, false, true );
-	wp_register_script('comment-reply', ' /wp-includes/js/comment-reply.min.js', array('jquery'), false, true );
+	wp_register_script('jquery', 'http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js', false, false, true);
+	wp_register_script('comment-reply', ' /wp-includes/js/comment-reply.min.js', array('jquery'), false, true);
 
 } add_action('init', 'theme_name_init');
 
@@ -91,7 +91,7 @@ function theme_name_enqueue_scripts_styles() {
 	 * Add JavaScript to pages with the comment form to support sites with
 	 * threaded comments (when in use).
 	 */
-	if ( is_singular() && comments_open() && get_option('thread_comments') )
+	if ( is_singular() && comments_open() && get_option('thread_comments'))
 		wp_enqueue_script('comment-reply', '', '', '', 'true');
 
 	wp_enqueue_script('jquery');
@@ -125,7 +125,7 @@ remove_action('wp_head', 'adjacent_posts_rel_link_wp_head');
  *
  * @since Theme Name 1.0
  */
-if ( ! function_exists('default_primary_nav') ) {
+if ( ! function_exists('default_primary_nav')) {
 	function default_primary_nav() {
 		echo '<ul id="primary-menu" class="primary-menu">';
 		wp_list_pages('title_li=');
@@ -134,7 +134,7 @@ if ( ! function_exists('default_primary_nav') ) {
 }
 
 
-if ( ! function_exists('theme_name_comment') ) {
+if ( ! function_exists('theme_name_comment')) {
 	/**
 	 * Template for comments and pingbacks.
 	 *
@@ -145,7 +145,7 @@ if ( ! function_exists('theme_name_comment') ) {
 	 *
 	 * @since Theme Name 1.0
 	 */
-	function theme_name_comment( $comment, $args, $depth ) {
+	function theme_name_comment($comment, $args, $depth) {
 		$GLOBALS['comment'] = $comment;
 		include 'comment-single.php';
 	}
@@ -283,10 +283,10 @@ add_filter('use_default_gallery_style', '__return_false');
  *
  * @since Theme Name 1.0
  */
-function theme_name_embed_filter( $output, $data, $url ) {
+function theme_name_embed_filter($output, $data, $url) {
 	$return = '<div class="flex-video">'.$output.'</div>';
 	return $return;
-} add_filter('oembed_dataparse', 'theme_name_embed_filter', 90, 3 );
+} add_filter('oembed_dataparse', 'theme_name_embed_filter', 90, 3);
 
 
 /* *****************************************************************************
@@ -337,7 +337,7 @@ if (function_exists('register_nav_menus')) {
 	register_nav_menus( array(
 		'primary-menu' => __('Primary Navigation', 'theme_name'),
 		'footer-menu' => __('Footer Navigation', 'theme_name'),
-	) );
+	));
 }
 
 

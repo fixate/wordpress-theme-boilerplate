@@ -133,7 +133,7 @@ class My_meta_box {
 		// Save data from meta box
 		function save($post_id) {
 				// verify nonce
-				if ( !isset($_POST['mytheme_meta_box_nonce']) || !wp_verify_nonce( $_POST['mytheme_meta_box_nonce'], basename(__FILE__) )) {
+				if ( !isset($_POST['mytheme_meta_box_nonce']) || !wp_verify_nonce($_POST['mytheme_meta_box_nonce'], basename(__FILE__))) {
 						return $post_id;
 				}
 
