@@ -68,8 +68,8 @@
 
 			<nav id="nav" role="navigation">
 				<?php wp_nav_menu(array(
-					'theme_location' => 'primary-nav',
-					'fallback_cb' => 'default_primary_nav',
+					'theme_location' => 'primary-menu',
+					'fallback_cb' => 'default_primary_menu',
 					'menu_class' => 'menu',
 					'container' => false,
 				)); ?>
