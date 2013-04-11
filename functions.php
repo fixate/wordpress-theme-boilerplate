@@ -125,7 +125,7 @@ remove_action('wp_head', 'adjacent_posts_rel_link_wp_head');
  *
  * @since Theme Name 1.0
  */
-if ( ! function_exists('default_primary_nav')) {
+if ( ! function_exists('default_primary_menu')) {
 	function default_primary_nav() {
 		echo '<ul id="primary-menu" class="primary-menu">';
 		wp_list_pages('title_li=');
