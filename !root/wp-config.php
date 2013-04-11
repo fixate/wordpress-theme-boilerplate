@@ -17,10 +17,11 @@
 /**
  * Easy local testing on multiple devices without any frustrating server setups.
  *
- * Ensure that in httpd-vhosts.conf you have the following alias:
+ * Ensure that in httpd-vhosts.conf you have the following alias for your local
+ * site's address:
  * ServerAlias [local.domain].*.xip.io
  *
- * Once you have updated your server config, uncomment the below lines, and then
+ * Once you have updated your server config, uncomment the lines below, and then
  * resave your permalink structure in the WordPress admin.
  *
  * Make sure you're testing on devices connected to the same network.
