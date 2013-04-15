@@ -227,18 +227,19 @@ function theme_name_paginate_links($total = -1) {
 if  (GA_UACODE !== false):
 	function theme_name_add_google_analytics() {
 	 ?>
-<script type="text/javascript">//<![CDATA[
+<script>
 	var _gaq = _gaq || [];
 	_gaq.push(['_setAccount', '<?php echo GA_UACODE; ?>']);
 	_gaq.push(['_trackPageview']);
-	_gaq.push(['_trackPageLoadTime']);
-
 	(function() {
-	var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-	ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		var ga = document.createElement('script');
+		ga.type = 'text/javascript';
+		ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0];
+		s.parentNode.insertBefore(ga, s);
 	})();
-//]]></script>
+</script>
 <?php
 } add_action('wp_footer', 'theme_name_add_google_analytics', 12);
 endif;
