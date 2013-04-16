@@ -13,20 +13,24 @@
 
 		<footer class="area-footer">
 
-			<?php // footer navigation ?>
-			<?php
-				wp_nav_menu(array(
-					'theme_location' => 'footer-nav',
-					'fallback_cb' => '',
-					'container'  => '',
-					'menu_id' => 'footer-nav',
-					'menu_class' => 'footer-nav'
-					)
-				);
-			?>
+			<div class="wrap cf">
 
-			<div>
-				<?php bloginfo(); ?> &copy; <?php echo date('Y'); ?> | Powered by <a href="http://wordpress.org">WordPress</a>
+				<?php // footer navigation ?>
+				<?php
+					wp_nav_menu(array(
+						'theme_location' => 'footer-nav',
+						'fallback_cb' => '',
+						'container'  => '',
+						'menu_id' => 'footer-nav',
+						'menu_class' => 'footer-nav'
+						)
+					);
+				?>
+
+				<div>
+					<?php bloginfo(); ?> &copy; <?php echo date('Y'); ?> | Powered by <a href="http://wordpress.org">WordPress</a>
+				</div>
+
 			</div>
 
 		</footer><!-- .area-footer -->
