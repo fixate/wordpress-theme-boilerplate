@@ -14,23 +14,6 @@
  * @package WordPress
  */
 
-/**
- * Easy local testing on multiple devices without any frustrating server setups.
- *
- * Ensure that in httpd-vhosts.conf you have the following alias for your local
- * site's address:
- * ServerAlias [local.domain].*.xip.io
- *
- * Once you have updated your server config, uncomment the lines below, and then
- * resave your permalink structure in the WordPress admin.
- *
- * Make sure you're testing on devices connected to the same network.
- *
- * @since Theme Name 1.0
- */
-// define('WP_HOME','http://[local.domain].[your ip address].xip.io');
-// define('WP_SITEURL','http://[local.domain].[your ip address].xip.io');
-
 /* ============================================================================
  * Load database info and local development parameters - http://bit.ly/YZknhD
  * ===========================================================================*/
