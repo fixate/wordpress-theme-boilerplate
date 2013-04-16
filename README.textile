@@ -10,12 +10,19 @@ This theme has the following features:
 # concise, uncluttered, and well commented templates
 # a well featured functions.php
 # "H5BP's":https://github.com/h5bp/html5-boilerplate/blob/master/.htaccess htaccess, with additional WordPress security
+# separation of local from production databases
 
 h2. Usage
 
 # clone this repo into your WordPress install's themes/ folder
 # develop your WordPress theme in debug mode
 # party.
+
+h2. Some Useful Resources For WordPress Workflows
+
+# "WordPress Skeleton":https://github.com/markjaquith/WordPress-Skeleton
+# "Scaling, Servers, and Deploy - Oh My!":http://wordpress.tv/2011/08/20/mark-jaquith-scaling-servers-and-deploys-oh-my/
+# "Deploying With Capistrano":http://invistruct.com/articles/deploying-wordpress-with-capistrano/
 
 h4. License
 
