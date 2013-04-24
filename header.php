@@ -82,5 +82,3 @@
 	<div class="area-content">
 
 		<div id="main" class="wrap cf" role="main">
-
-			<!--[if lte IE 8]><div class="alert alert-danger">Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</div><![endif]-->
