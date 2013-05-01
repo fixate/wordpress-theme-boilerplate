@@ -305,7 +305,7 @@ function theme_name_embed_filter($output, $data, $url) {
 /*function theme_name_register_post_types() {
 	register_post_type('[posttype]', array(
 		'labels' => array(
-			'name'               => __('[posttype]', ''),
+			'name'               => __('All [posttype]s', ''),
 			'singular_name'      => __('[posttype]', ''),
 			'add_new'            => __('Add New', ''),
 			'add_new_item'       => __('Add new entry', ''),
