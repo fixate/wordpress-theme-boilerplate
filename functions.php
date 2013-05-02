@@ -307,6 +307,7 @@ function theme_name_embed_filter($output, $data, $url) {
 		'labels' => array(
 			'name'               => __('All [posttype]s', ''),
 			'singular_name'      => __('[posttype]', ''),
+			'all_items'          => __('All Items', ''),
 			'add_new'            => __('Add New', ''),
 			'add_new_item'       => __('Add new entry', ''),
 			'edit_item'          => __('Edit entry', ''),
