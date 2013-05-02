@@ -280,7 +280,8 @@ add_filter('use_default_gallery_style', '__return_false');
 
 
 /**
- * Wrap embeds in flexible wrappers
+ * Wrap embeds in flexible wrappers. Requires classes for flex-video:
+ * http://mopo.ws/TuyaHd
  *
  * @since Theme Name 1.0
  */
