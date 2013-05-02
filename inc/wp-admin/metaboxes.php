@@ -60,10 +60,10 @@ $meta_boxes = array(
 );
 
 foreach ($meta_boxes as $meta_box) {
-    $my_box = new My_meta_box($meta_box);
+    $my_box = new Themename_meta_box($meta_box);
 }
 
-class My_meta_box {
+class Themename_meta_box {
 
 		protected $_meta_box;
 
@@ -87,7 +87,7 @@ class My_meta_box {
 				global $post;
 
 				// Use nonce for verification
-				echo '<input type="hidden" name="mytheme_meta_box_nonce" value="', wp_create_nonce(basename(__FILE__)), '" />';
+				echo '<input type="hidden" name="theme_name_meta_box_nonce" value="', wp_create_nonce(basename(__FILE__)), '" />';
 
 				echo '<table class="form-table">';
 
@@ -133,7 +133,7 @@ class My_meta_box {
 		// Save data from meta box
 		function save($post_id) {
 				// verify nonce
-				if ( !isset($_POST['mytheme_meta_box_nonce']) || !wp_verify_nonce($_POST['mytheme_meta_box_nonce'], basename(__FILE__))) {
+				if ( !isset($_POST['theme_name_meta_box_nonce']) || !wp_verify_nonce($_POST['theme_name_meta_box_nonce'], basename(__FILE__))) {
 						return $post_id;
 				}
 
