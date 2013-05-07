@@ -74,7 +74,7 @@ function theme_name_init() {
 	// Register Scripts
 	wp_deregister_script('jquery');
 	wp_deregister_script('comment-reply');
-	wp_register_script('jquery', 'http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js', false, false, true);
+	wp_register_script('jquery', 'http://ajax.googleapis.com/ajax/lib/jquery/1.8.3/jquery.min.js', false, false, true);
 	wp_register_script('comment-reply', ' /wp-includes/js/comment-reply.min.js', array('jquery'), false, true);
 
 } add_action('init', 'theme_name_init');
