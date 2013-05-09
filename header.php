@@ -26,8 +26,8 @@
 		<meta name="msapplication-TileColor" content="#ffffff"/>
 		<meta name="msapplication-TileImage" content="apple-touch-icon-144x144-precomposed.png"/>
 
-		<link rel="SHORTCUT ICON" href="<?php echo THEME_DIR; ?>/img/favicon.ico" type="image/x-icon" />
-		<link rel="logo" type="image/svg" href="<?php echo THEME_DIR; ?>/img/logo.svg"/>
+		<link rel="SHORTCUT ICON" href="<?php echo THEME_URI; ?>/img/favicon.ico" type="image/x-icon" />
+		<link rel="logo" type="image/svg" href="<?php echo THEME_URI; ?>/img/logo.svg"/>
 		<!--[if ! lte IE 7]><!-->
 		<link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>" />
 		<!--<![endif]-->
@@ -59,9 +59,9 @@
 
 		<div class="wrap cf">
 
-				<!--[if lte IE 8]><a class="logo" href="<?php echo home_url('/'); ?>"><img src="<?php echo THEME_DIR; ?>/img/logo.png"></a><![endif]-->
-				<!--[if gt IE 8]><a class="logo" href="<?php echo home_url('/'); ?>"><img src="<?php echo THEME_DIR; ?>/img/logo.svg"></a><![endif]-->
-				<!--[if !IE]> --><a class="logo" href="<?php echo home_url('/'); ?>"><img src="<?php echo THEME_DIR; ?>/img/logo.svg"></a><!-- <![endif]-->
+				<!--[if lte IE 8]><a class="logo" href="<?php echo home_url('/'); ?>"><img src="<?php echo THEME_URI; ?>/img/logo.png"></a><![endif]-->
+				<!--[if gt IE 8]><a class="logo" href="<?php echo home_url('/'); ?>"><img src="<?php echo THEME_URI; ?>/img/logo.svg"></a><![endif]-->
+				<!--[if !IE]> --><a class="logo" href="<?php echo home_url('/'); ?>"><img src="<?php echo THEME_URI; ?>/img/logo.svg"></a><!-- <![endif]-->
 
 			<?php // allow screenreaders to skip navigation ?>
 			<a class="visuallyhidden" href="#main">skip navigation and go to main content</a>
