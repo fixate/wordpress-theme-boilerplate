@@ -39,3 +39,14 @@
 
 	</body>
 </html>
+
+<?php
+/*	if (current_user_can('administrator')){
+		global $wpdb;
+		echo "<pre>";
+		print_r($wpdb->queries);
+		echo "<br><br>";
+		debug_print_backtrace();
+		echo "</pre>";
+	}*/
+?>

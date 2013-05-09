@@ -1,7 +1,7 @@
 <?php
 
-define('THEME_DIR', get_template_directory_uri());
-define('THEME_NAME_THEME_BASEPATH', str_replace('\\', '/', dirname(__FILE__)));
+define('THEME_URI', get_template_directory_uri());
+define('THEME_BASEPATH', str_replace('\\', '/', dirname(__FILE__)));
 define('GA_UACODE', false);
 
 // Add theme support - must come before init() hook
@@ -25,8 +25,8 @@ Mailman::wp_bootstrap(array(
 	'to' => array('your@email.com', 'your name'),
 	'from_fields' => array('mail_email', 'mail_name'),
 	'templates' => array(
-		'html' => THEME_NAME_THEME_BASEPATH.'/inc/templates/contact.html.php',
-		'text' => THEME_NAME_THEME_BASEPATH.'/inc/templates/contact.text.php',
+		'html' => THEME_BASEPATH.'/inc/templates/contact.html.php',
+		'text' => THEME_BASEPATH.'/inc/templates/contact.text.php',
 	),
 	'success_message' => __('Your message has been sent! You\'ll hear back from us soon.', 'theme_name'),
 	'validation_messages' => array(
@@ -254,7 +254,7 @@ endif;
 	$query_vars = &$request->query_vars;
 
 	if ($query_vars['pagename'] == 'contact') {
-		require_once (theme_name_THEME_BASEPATH.'/inc/mailman.php');
+		require_once (THEME_BASEPATH.'/inc/mailman.php');
 
 		if (Mailman::has_post()) {
 			$query_vars['mailman_pat'] = Mailman::delivers($_POST)
