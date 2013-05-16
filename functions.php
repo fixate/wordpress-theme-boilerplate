@@ -303,6 +303,19 @@ function theme_name_embed_filter($output, $data, $url) {
 } add_filter('oembed_dataparse', 'theme_name_embed_filter', 90, 3);
 
 
+/**
+ * Replace default class on comment_reply_link
+ * @param  string $class The string containing the entire class attribute
+ * @return string        The modified class attribute
+ *
+ * @since Theme Name 1.0
+ */
+function theme_name_reply_link_class($class){
+	$class = str_replace("class='comment-reply-link'", "class='btn'", $class);
+	return $class;
+} add_filter('comment_reply_link', 'theme_name_reply_link_class');
+
+
 /* *****************************************************************************
 	 &post types
 	 ************************************************************************** */
