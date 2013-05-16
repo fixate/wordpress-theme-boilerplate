@@ -113,6 +113,18 @@ remove_action('wp_head', 'start_post_rel_link', 10, 0);
 remove_action('wp_head', 'parent_post_rel_link', 10, 0);
 remove_action('wp_head', 'adjacent_posts_rel_link_wp_head');
 
+/**
+ * Add Theme Name avatar
+ *
+ * @since Theme Name 1.0
+ */
+// function theme_name_add_gravatar($avatar_defaults) {
+// 	$avatar = TEMPLATE_URL . '/img/avatar.png';
+// 	$avatar_defaults[$avatar] = 'Theme Name';
+
+// 	return $avatar_defaults;
+// } add_filter( 'avatar_defaults', 'theme_name_add_gravatar' );
+
 
 /* *****************************************************************************
 	 &functions
