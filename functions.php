@@ -119,7 +119,7 @@ remove_action('wp_head', 'adjacent_posts_rel_link_wp_head');
  * @since Theme Name 1.0
  */
 // function theme_name_add_gravatar($avatar_defaults) {
-// 	$avatar = TEMPLATE_URL . '/img/avatar.png';
+// 	$avatar = THEME_URI . '/img/avatar.png';
 // 	$avatar_defaults[$avatar] = 'Theme Name';
 
 // 	return $avatar_defaults;
