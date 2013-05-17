@@ -44,32 +44,45 @@ if ( post_password_required())
 	<?php
 	$custom_comment_form = array(
 		'fields' => apply_filters('comment_form_default_fields', array(
-			'author' => '<p class="comment-form-author">' .
-				'<label for="author">' . __('Your Name' , 'theme_name') .
-				($req ? '<span class="required">*</span>' : '') . '</label> ' .
-				'<input id="author" name="author" type="text" value="' .
-				esc_attr($commenter['comment_author']) . '" size="30"' . ' class="required" />' .
+			'author' =>
+				'<p class="comment-form-author">' .
+					'<label for="author">' .
+						__('Your Name' , 'theme_name') . ($req ? '<span class="required">*</span>' : '') .
+					'</label> ' .
+					'<input id="author" name="author" type="text" value="' .
+						esc_attr($commenter['comment_author']) . '" size="30"' . ' class="required" />' .
 				'</p>',
-			'email'  => '<p class="comment-form-email">' .
-				'<label for="email">' . __('Your Email' , 'theme_name') .
-				($req ? '<span class="required">*</span>' : '') . '</label> ' .
-				'<input id="email" name="email" type="text" value="' . esc_attr(  $commenter['comment_author_email']) . '" size="30"' . ' class="required email" />' .
+			'email'  =>
+				'<p class="comment-form-email">' .
+					'<label for="email">' .
+						__('Your Email' , 'theme_name') .	($req ? '<span class="required">*</span>' : '') .
+					'</label> ' .
+					'<input id="email" name="email" type="text" value="' . esc_attr(  $commenter['comment_author_email']) . '" size="30"' . ' class="required email" />' .
 				'</p>',
-			'url'    =>  '<p class="comment-form-url">' .
-				'<label for="url">' . __('Your Website' , 'theme_name') . '</label> ' . '<input id="url" name="url" type="text" value="' . esc_attr(  $commenter['comment_author_url']) . '" size="30"' . ' />' .
+			'url'    =>
+				'<p class="comment-form-url">' .
+					'<label for="url">' .
+						__('Your Website' , 'theme_name') .
+					'</label> ' .
+					'<input id="url" name="url" type="text" value="' . esc_attr(  $commenter['comment_author_url']) . '" size="30"' . ' />' .
 				'</p>')),
-			'comment_field' => '<p class="comment-form-comment">' .
+		'comment_field' =>
+			'<p class="comment-form-comment">' .
 				'<textarea id="comment" name="comment" cols="45" rows="8" aria-required="true" class="required"></textarea>' .
-				'</p>',
-			'logged_in_as' => '<p class="logged-in-as">' . sprintf( __('Logged in as <a href="%1$s">%2$s</a>. <a href="%3$s">Log out?</a>'), admin_url('profile.php'), $user_identity, wp_logout_url( apply_filters('the_permalink', get_permalink($post->id)))) . '</p>',
-			'title_reply' => __('Leave a Reply' , 'theme_name'),
-			'comment_notes_before' => '',
-			'comment_notes_after' => '',
-			'cancel_reply_link' => __('Cancel' , 'theme_name'),
-			'label_submit' => __('Post Comment' , 'theme_name'),
+			'</p>',
+		'logged_in_as' =>
+			'<p class="logged-in-as">' .
+				sprintf( __('Logged in as <a href="%1$s">%2$s</a>. <a href="%3$s">Log out?</a>'), admin_url('profile.php'), $user_identity, wp_logout_url( apply_filters('the_permalink', get_permalink($post->id)))) .
+			'</p>',
+		'title_reply'						=> __('Leave a Reply' , 'theme_name'),
+		'comment_notes_before'	=> '<p><em>' . __( 'Your email address will not be published.' ) . '</em></p>',
+		'comment_notes_after'		=> '',
+		'cancel_reply_link'			=> __('Cancel' , 'theme_name'),
+		'label_submit'					=> __('Post Comment' , 'theme_name'),
 		);
-		comment_form($custom_comment_form);
 	?>
+
+	<?php comment_form($custom_comment_form);	?>
 
 </section><!-- #comments -->
 <?php endif; // comments_open() ?>
