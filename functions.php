@@ -357,24 +357,24 @@ function theme_name_reply_link_class($class){
 	 ************************************************************************** */
 /*function theme_name_add_custom_taxonomies() {
 	register_taxonomy('[taxonomy]', '[post_type]', array(
-		'hierarchical' => true,
-		'labels' => array(
-			'name' => _x( '[taxonomy_plural]', 'taxonomy general name' ),
-			'singular_name' => _x( '[taxonomy_singular]', 'taxonomy singular name' ),
-			'search_items' =>  __( 'Search [taxonomy_plural]' ),
-			'all_items' => __( 'All [taxonomy_plural]' ),
-			'parent_item' => __( 'Parent [taxonomy_singular]' ),
-			'parent_item_colon' => __( 'Parent [taxonomy_singular]:' ),
-			'edit_item' => __( 'Edit [taxonomy_singular]' ),
-			'update_item' => __( 'Update [taxonomy_singular]' ),
-			'add_new_item' => __( 'Add New [taxonomy_singular]' ),
-			'new_item_name' => __( 'New [taxonomy_singular] Name' ),
-			'menu_name' => __( '[taxonomy_plural]' ),
+		'hierarchical'				=> true,
+		'labels'							=> array(
+			'name'							=> _x( '[taxonomy_plural]', 'taxonomy general name' ),
+			'singular_name'			=> _x( '[taxonomy_singular]', 'taxonomy singular name' ),
+			'search_items'			=>  __( 'Search [taxonomy_plural]' ),
+			'all_items'					=> __( 'All [taxonomy_plural]' ),
+			'parent_item'				=> __( 'Parent [taxonomy_singular]' ),
+			'parent_item_colon'	=> __( 'Parent [taxonomy_singular]:' ),
+			'edit_item'					=> __( 'Edit [taxonomy_singular]' ),
+			'update_item'				=> __( 'Update [taxonomy_singular]' ),
+			'add_new_item'			=> __( 'Add New [taxonomy_singular]' ),
+			'new_item_name'			=> __( 'New [taxonomy_singular] Name' ),
+			'menu_name'					=> __( '[taxonomy_plural]' ),
 		),
-		'rewrite' => array(
-			'slug' => '[taxonomy]',
-			'with_front' => false,
-			'hierarchical' => true
+		'rewrite'					=> array(
+			'slug'					=> '[taxonomy]',
+			'with_front'		=> false,
+			'hierarchical'	=> true
 		),
 	));
 } add_action( 'init', 'theme_name_add_custom_taxonomies', 0 );
