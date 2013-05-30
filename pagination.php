@@ -1,6 +1,9 @@
 <?php if (is_single()): ?>
 	<div class="paginate">
 		<?php previous_post_link('<span class="prev">%link</span>', '<span>&laquo;</span> %title') ?>
+		<?php if (get_previous_post() && get_next_post()): ?>
+			<span> | </span>
+		<?php endif ?>
 		<?php next_post_link('<span class="next">%link</span>', '%title <span>&raquo;</span>') ?>
 	</div>
 <?php else: ?>
