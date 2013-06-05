@@ -29,5 +29,14 @@ define('DB_HOST', 'localhost');
 /* ============================================================================
  * Debug mode
  * ===========================================================================*/
-define('SAVEQUERIES', true);
+define('SAVEQUERIES', true); // all WordPress queries can be accessed via $wpdb->queries
 define('WP_DEBUG', true);
+
+/* ============================================================================
+ * Clean up trash
+ * ===========================================================================*/
+define('EMPTY_TRASH_DAYS', 0 );
+
+/* ============================================================================
+ * Import Local Test Data via admin - https://wpcom-themes.svn.automattic.com/demo/theme-unit-test-data.xml
+ * ===========================================================================*/
