@@ -20,7 +20,7 @@
 		<title><?php wp_title('|'); ?></title>
 
 		<?php // enable responsive behaviour for all devices ?>
-		<meta name="viewport" content="width=device-width">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 
 		<?php // Windows 8 start screen tile ?>
 		<meta name="msapplication-TileColor" content="#ffffff"/>
