@@ -64,7 +64,7 @@ if (is_admin()) {
  * All scripts are registered here, but must be specifically enqueued where they
  * are required via theme_local_enqueue_scripts_styles()
  *
- * @since Theme Name 1.0
+ * @since Theme_Name 1.0
  */
 function theme_local_init() {
 	// If in the admin, nonet of the code below applies
@@ -82,7 +82,7 @@ function theme_local_init() {
 /**
  * Enqueue scripts and styles for front-end.
  *
- * @since Theme Name 1.0
+ * @since Theme_Name 1.0
  */
 function theme_local_enqueue_scripts_styles() {
 	global $wp_styles;
@@ -101,7 +101,7 @@ function theme_local_enqueue_scripts_styles() {
 /**
  * Remove junk from head
  *
- * @since Theme Name 1.0
+ * @since Theme_Name 1.0
  */
 remove_action('wp_head', 'rsd_link');
 remove_action('wp_head', 'wp_generator');
@@ -114,13 +114,13 @@ remove_action('wp_head', 'parent_post_rel_link', 10, 0);
 remove_action('wp_head', 'adjacent_posts_rel_link_wp_head');
 
 /**
- * Add Theme Name avatar
+ * Add Theme_Name avatar
  *
- * @since Theme Name 1.0
+ * @since Theme_Name 1.0
  */
 // function theme_local_add_gravatar($avatar_defaults) {
 // 	$avatar = THEME_URI . '/img/avatar.png';
-// 	$avatar_defaults[$avatar] = 'Theme Name';
+// 	$avatar_defaults[$avatar] = 'Theme_Name';
 
 // 	return $avatar_defaults;
 // } add_filter( 'avatar_defaults', 'theme_local_add_gravatar' );
@@ -135,7 +135,7 @@ remove_action('wp_head', 'adjacent_posts_rel_link_wp_head');
  *
  * Used as a callback by wp_nav_menu() when no menu is created in the admin.
  *
- * @since Theme Name 1.0
+ * @since Theme_Name 1.0
  */
 if ( ! function_exists('default_primary_menu')) {
 	function default_primary_nav() {
@@ -155,7 +155,7 @@ if ( ! function_exists('theme_local_comment')) {
 	 *
 	 * Used as a callback by wp_list_comments() for displaying the comments.
 	 *
-	 * @since Theme Name 1.0
+	 * @since Theme_Name 1.0
 	 */
 	function theme_local_comment($comment, $args, $depth) {
 		$GLOBALS['comment'] = $comment;
@@ -166,7 +166,7 @@ if ( ! function_exists('theme_local_comment')) {
 /**
  * Customise post excerpts
  *
- * @since Theme Name 1.0
+ * @since Theme_Name 1.0
  */
 function theme_local_custom_excerpt($limit) {
 	$excerpt = explode(' ', get_the_excerpt(), $limit);
@@ -184,7 +184,7 @@ function theme_local_custom_excerpt($limit) {
 /**
  * Output paginated links
  *
- * @since Theme Name 1.0
+ * @since Theme_Name 1.0
  */
 function theme_local_paginate_links($total = -1) {
 	global $wp_query;
@@ -234,7 +234,7 @@ function theme_local_paginate_links($total = -1) {
 /**
  * Add Google Analytics to footer
  *
- * @since Theme Name 1.0
+ * @since Theme_Name 1.0
  */
 if  (GA_UACODE !== false):
 	function theme_local_add_google_analytics() {
@@ -260,7 +260,7 @@ endif;
 /**
  * Mailer Functionality
  *
- * @since Theme Name 1.0
+ * @since Theme_Name 1.0
  */
 /*function theme_local_pre_get_posts($request) {
 	$query_vars = &$request->query_vars;
@@ -286,7 +286,7 @@ endif;
 /**
  * Disable WordPress outputting default gallery styles
  *
- * @since Theme Name 1.0
+ * @since Theme_Name 1.0
  */
 add_filter('use_default_gallery_style', '__return_false');
 
@@ -295,7 +295,7 @@ add_filter('use_default_gallery_style', '__return_false');
  * Wrap embeds in flexible wrappers. Requires classes for flex-video:
  * http://mopo.ws/TuyaHd
  *
- * @since Theme Name 1.0
+ * @since Theme_Name 1.0
  */
 function theme_local_embed_filter($output, $data, $url) {
 	$return = '<div class="flex-video">'.$output.'</div>';
@@ -308,7 +308,7 @@ function theme_local_embed_filter($output, $data, $url) {
  * @param  string $class The string containing the entire class attribute
  * @return string        The modified class attribute
  *
- * @since Theme Name 1.0
+ * @since Theme_Name 1.0
  */
 function theme_local_reply_link_class($class){
 	$class = str_replace("class='comment-reply-link'", "class='btn'", $class);
@@ -326,7 +326,7 @@ function theme_local_reply_link_class($class){
  * This is most safely done in a theme specific plugin so that new themes will
  * preserve data added to these posts.
  *
- * @since Theme Name 1.0
+ * @since Theme_Name 1.0
  */
 /*function theme_local_register_post_types() {
 	register_post_type('[posttype]', array(
@@ -391,7 +391,7 @@ function theme_local_add_taxonomy_to_cpt(){
 /**
  * Register nav menus
  *
- * @since Theme Name 1.0
+ * @since Theme_Name 1.0
  */
 if (function_exists('register_nav_menus')) {
 	register_nav_menus( array(
@@ -408,7 +408,7 @@ if (function_exists('register_nav_menus')) {
 /**
  * Register widgets
  *
- * @since Theme Name 1.0
+ * @since Theme_Name 1.0
  */
 /*if (function_exists('register_sidebar')) {
 	register_sidebar(
