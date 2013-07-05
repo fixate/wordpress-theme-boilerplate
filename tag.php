@@ -7,14 +7,14 @@
  * Learn more: http://codex.wordpress.org/Template_Hierarchy
  *
  * @package WordPress
- * @subpackage Theme_Name
+ * @subpackage theme_folder
  * @since Theme Name 1.0
  */
 
 get_header(); ?>
 
 <?php if ( have_posts()) : ?>
-	<h1><?php printf( __('Tag Archives: %s', 'twentytwelve'), '<span>' . single_tag_title('', false) . '</span>'); ?></h1>
+	<h1><?php printf( __('Tag Archives: %s', 'theme_local'), '<span>' . single_tag_title('', false) . '</span>'); ?></h1>
 
 	<?php	while ( have_posts()) : the_post(); ?>
 

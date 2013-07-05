@@ -1,4 +1,15 @@
-<?php /* Included in functions.php (theme_name_comment()) */ ?>
+<?php
+/**
+ * The template for displaying Category pages.
+ *
+ * Included in functions.php (theme_local_comment())
+ *
+ * @package WordPress
+ * @subpackage theme_folder
+ * @since Theme Name 1.0
+ */
+?>
+
 <?php
 	switch ($comment->comment_type) :
 		case 'pingback' :
@@ -7,9 +18,9 @@
 	?>
 	<li <?php comment_class(); ?> id="comment-<?php comment_ID(); ?>">
 		<p><?php
-			$comment->comment_type == 'pingback' ? _e('Pingback:', 'theme_name') : _e('Trackback:', 'theme_name');
+			$comment->comment_type == 'pingback' ? _e('Pingback:', 'theme_local') : _e('Trackback:', 'theme_local');
 			 ?>
-			 <?php comment_author_link(); ?> <?php edit_comment_link( __('(Edit)', 'theme_name'), '<span>', '</span>'); ?>
+			 <?php comment_author_link(); ?> <?php edit_comment_link( __('(Edit)', 'theme_local'), '<span>', '</span>'); ?>
 		</p>
 	<?php
 			break;
@@ -25,19 +36,19 @@
 					printf('<cite class="fn">%1$s %2$s</cite>',
 						get_comment_author_link(),
 						// If current post author is also comment author, make it known visually.
-						($comment->user_id === $post->post_author) ? '<span> ' . __('Post author', 'theme_name') . '</span>' : ''
+						($comment->user_id === $post->post_author) ? '<span> ' . __('Post author', 'theme_local') . '</span>' : ''
 					);
 					printf('<a href="%1$s"><time datetime="%2$s">%3$s</time></a>',
 						esc_url( get_comment_link($comment->comment_ID)),
 						get_comment_time('c'),
 						/* translators: 1: date, 2: time */
-						sprintf( __('%1$s at %2$s', 'theme_name'), get_comment_date(), get_comment_time())
+						sprintf( __('%1$s at %2$s', 'theme_local'), get_comment_date(), get_comment_time())
 					);
 				?>
 			</header><!-- .comment-meta -->
 
 			<?php if ($comment->comment_approved == '0') : ?>
-				<p class="comment-awaiting-moderation"><?php _e('Your comment is awaiting moderation.', 'theme_name'); ?></p>
+				<p class="comment-awaiting-moderation"><?php _e('Your comment is awaiting moderation.', 'theme_local'); ?></p>
 			<?php endif; ?>
 
 			<div class="comment-content comment">
@@ -45,7 +56,7 @@
 			</div><!-- .comment-content -->
 
 			<div class="reply">
-				<?php comment_reply_link( array_merge($args, array('reply_text' => __('Reply', 'theme_name'), 'depth' => $depth, 'max_depth' => $args['max_depth']))); ?>
+				<?php comment_reply_link( array_merge($args, array('reply_text' => __('Reply', 'theme_local'), 'depth' => $depth, 'max_depth' => $args['max_depth']))); ?>
 			</div><!-- .reply -->
 		</article><!-- #comment-## -->
 	<?php

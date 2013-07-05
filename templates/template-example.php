@@ -8,7 +8,7 @@ Template Name: Example template (Remove if not using)
  * Template for creating template pages
  *
  * @package WordPress
- * @subpackage Theme_Name
+ * @subpackage theme_folder
  * @since Theme Name 1.0
  */
 ?>

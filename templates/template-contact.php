@@ -8,7 +8,7 @@ Template Name: Contact form template (Remove if not using)
  * Contact form template
  *
  * @package WordPress
- * @subpackage Theme_Name
+ * @subpackage theme_folder
  * @since Theme Name 1.0
  */
 get_header(); ?>

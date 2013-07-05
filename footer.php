@@ -3,7 +3,7 @@
  * The template for displaying the footer.
  *
  * @package WordPress
- * @subpackage Theme_Name
+ * @subpackage theme_folder
  * @since Theme Name 1.0
  */
 ?>

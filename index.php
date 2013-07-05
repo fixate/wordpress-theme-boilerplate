@@ -10,7 +10,7 @@
  * Learn more: http://codex.wordpress.org/Template_Hierarchy
  *
  * @package WordPress
- * @subpackage Theme_Name
+ * @subpackage theme_folder
  * @since Theme Name 1.0
  */
 

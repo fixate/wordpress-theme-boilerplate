@@ -87,7 +87,7 @@ class Themename_meta_box {
 			global $post;
 
 			// Use nonce for verification
-			echo '<input type="hidden" name="theme_name_meta_box_nonce" value="', wp_create_nonce(basename(__FILE__)), '" />';
+			echo '<input type="hidden" name="theme_local_meta_box_nonce" value="', wp_create_nonce(basename(__FILE__)), '" />';
 
 			echo '<table class="form-table">';
 
@@ -133,7 +133,7 @@ class Themename_meta_box {
 	// Save data from meta box
 	function save($post_id) {
 		// verify nonce
-		if ( !isset($_POST['theme_name_meta_box_nonce']) || !wp_verify_nonce($_POST['theme_name_meta_box_nonce'], basename(__FILE__))) {
+		if ( !isset($_POST['theme_local_meta_box_nonce']) || !wp_verify_nonce($_POST['theme_local_meta_box_nonce'], basename(__FILE__))) {
 				return $post_id;
 		}
 

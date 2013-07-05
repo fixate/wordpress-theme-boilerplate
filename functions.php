@@ -28,7 +28,7 @@ Mailman::wp_bootstrap(array(
 		'html' => THEME_BASEPATH.'/inc/templates/contact.html.php',
 		'text' => THEME_BASEPATH.'/inc/templates/contact.text.php',
 	),
-	'success_message' => __('Your message has been sent! You\'ll hear back from us soon.', 'theme_name'),
+	'success_message' => __('Your message has been sent! You\'ll hear back from us soon.', 'theme_local'),
 	'validation_messages' => array(
 		'Validation::presence' => '%s cannot be blank.',
 		'Validation::email' => '%s must be a valid email address.',
@@ -62,11 +62,11 @@ if (is_admin()) {
  * Initialise scripts site-wide
  *
  * All scripts are registered here, but must be specifically enqueued where they
- * are required via theme_name_enqueue_scripts_styles()
+ * are required via theme_local_enqueue_scripts_styles()
  *
  * @since Theme Name 1.0
  */
-function theme_name_init() {
+function theme_local_init() {
 	// If in the admin, nonet of the code below applies
 	if (is_admin())
 		return;
@@ -77,14 +77,14 @@ function theme_name_init() {
 	wp_register_script('jquery', 'http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js', false, false, true);
 	wp_register_script('comment-reply', ' /wp-includes/js/comment-reply.min.js', array('jquery'), false, true);
 
-} add_action('init', 'theme_name_init');
+} add_action('init', 'theme_local_init');
 
 /**
  * Enqueue scripts and styles for front-end.
  *
  * @since Theme Name 1.0
  */
-function theme_name_enqueue_scripts_styles() {
+function theme_local_enqueue_scripts_styles() {
 	global $wp_styles;
 
 	/*
@@ -96,7 +96,7 @@ function theme_name_enqueue_scripts_styles() {
 
 	wp_enqueue_script('jquery');
 
-} add_action('wp_enqueue_scripts', 'theme_name_enqueue_scripts_styles');
+} add_action('wp_enqueue_scripts', 'theme_local_enqueue_scripts_styles');
 
 /**
  * Remove junk from head
@@ -118,12 +118,12 @@ remove_action('wp_head', 'adjacent_posts_rel_link_wp_head');
  *
  * @since Theme Name 1.0
  */
-// function theme_name_add_gravatar($avatar_defaults) {
+// function theme_local_add_gravatar($avatar_defaults) {
 // 	$avatar = THEME_URI . '/img/avatar.png';
 // 	$avatar_defaults[$avatar] = 'Theme Name';
 
 // 	return $avatar_defaults;
-// } add_filter( 'avatar_defaults', 'theme_name_add_gravatar' );
+// } add_filter( 'avatar_defaults', 'theme_local_add_gravatar' );
 
 
 /* *****************************************************************************
@@ -146,18 +146,18 @@ if ( ! function_exists('default_primary_menu')) {
 }
 
 
-if ( ! function_exists('theme_name_comment')) {
+if ( ! function_exists('theme_local_comment')) {
 	/**
 	 * Template for comments and pingbacks.
 	 *
 	 * To override this walker in a child theme without modifying the comments template
-	 * simply create your own theme_name_comment(), and that function will be used instead.
+	 * simply create your own theme_local_comment(), and that function will be used instead.
 	 *
 	 * Used as a callback by wp_list_comments() for displaying the comments.
 	 *
 	 * @since Theme Name 1.0
 	 */
-	function theme_name_comment($comment, $args, $depth) {
+	function theme_local_comment($comment, $args, $depth) {
 		$GLOBALS['comment'] = $comment;
 		include 'comment-single.php';
 	}
@@ -168,7 +168,7 @@ if ( ! function_exists('theme_name_comment')) {
  *
  * @since Theme Name 1.0
  */
-function theme_name_custom_excerpt($limit) {
+function theme_local_custom_excerpt($limit) {
 	$excerpt = explode(' ', get_the_excerpt(), $limit);
 	if (count($excerpt) >= $limit) {
 		array_pop($excerpt);
@@ -186,7 +186,7 @@ function theme_name_custom_excerpt($limit) {
  *
  * @since Theme Name 1.0
  */
-function theme_name_paginate_links($total = -1) {
+function theme_local_paginate_links($total = -1) {
 	global $wp_query;
 	if ($total < 0)
 		$total = $wp_query->max_num_pages;
@@ -237,7 +237,7 @@ function theme_name_paginate_links($total = -1) {
  * @since Theme Name 1.0
  */
 if  (GA_UACODE !== false):
-	function theme_name_add_google_analytics() {
+	function theme_local_add_google_analytics() {
 	 ?>
 <script>
 	var _gaq = _gaq || [];
@@ -253,7 +253,7 @@ if  (GA_UACODE !== false):
 	})();
 </script>
 <?php
-} add_action('wp_footer', 'theme_name_add_google_analytics', 12);
+} add_action('wp_footer', 'theme_local_add_google_analytics', 12);
 endif;
 
 
@@ -262,7 +262,7 @@ endif;
  *
  * @since Theme Name 1.0
  */
-/*function theme_name_pre_get_posts($request) {
+/*function theme_local_pre_get_posts($request) {
 	$query_vars = &$request->query_vars;
 
 	if ($query_vars['pagename'] == 'contact') {
@@ -276,7 +276,7 @@ endif;
 			$query_vars['mailman_pat'] = Mailman::no_work();
 		}
 	}
-} add_action('pre_get_posts', 'theme_name_pre_get_posts');*/
+} add_action('pre_get_posts', 'theme_local_pre_get_posts');*/
 
 
 /* *****************************************************************************
@@ -297,10 +297,10 @@ add_filter('use_default_gallery_style', '__return_false');
  *
  * @since Theme Name 1.0
  */
-function theme_name_embed_filter($output, $data, $url) {
+function theme_local_embed_filter($output, $data, $url) {
 	$return = '<div class="flex-video">'.$output.'</div>';
 	return $return;
-} add_filter('oembed_dataparse', 'theme_name_embed_filter', 90, 3);
+} add_filter('oembed_dataparse', 'theme_local_embed_filter', 90, 3);
 
 
 /**
@@ -310,10 +310,10 @@ function theme_name_embed_filter($output, $data, $url) {
  *
  * @since Theme Name 1.0
  */
-function theme_name_reply_link_class($class){
+function theme_local_reply_link_class($class){
 	$class = str_replace("class='comment-reply-link'", "class='btn'", $class);
 	return $class;
-} add_filter('comment_reply_link', 'theme_name_reply_link_class');
+} add_filter('comment_reply_link', 'theme_local_reply_link_class');
 
 
 /* *****************************************************************************
@@ -328,7 +328,7 @@ function theme_name_reply_link_class($class){
  *
  * @since Theme Name 1.0
  */
-/*function theme_name_register_post_types() {
+/*function theme_local_register_post_types() {
 	register_post_type('[posttype]', array(
 		'labels' => array(
 			'name'               => __('All [posttype]s', ''),
@@ -349,13 +349,13 @@ function theme_name_reply_link_class($class){
 		'taxonomies'  => array('category'),
 		'has_archive' => true,
 	));
-} add_action('init', 'theme_name_register_post_types');*/
+} add_action('init', 'theme_local_register_post_types');*/
 
 
 /* *****************************************************************************
 	 &taxonomies
 	 ************************************************************************** */
-/*function theme_name_add_custom_taxonomies() {
+/*function theme_local_add_custom_taxonomies() {
 	register_taxonomy('[taxonomy]', '[post_type]', array(
 		'hierarchical'				=> true,
 		'labels'							=> array(
@@ -377,11 +377,11 @@ function theme_name_reply_link_class($class){
 			'hierarchical'	=> true
 		),
 	));
-} add_action( 'init', 'theme_name_add_custom_taxonomies', 0 );
+} add_action( 'init', 'theme_local_add_custom_taxonomies', 0 );
 
-function theme_name_add_taxonomy_to_cpt(){
+function theme_local_add_taxonomy_to_cpt(){
 	register_taxonomy_for_object_type('[taxonomy]', '[post_type]');
-} add_action('init','theme_name_add_taxonomy_to_cpt');*/
+} add_action('init','theme_local_add_taxonomy_to_cpt');*/
 
 
 /* *****************************************************************************
@@ -395,8 +395,8 @@ function theme_name_add_taxonomy_to_cpt(){
  */
 if (function_exists('register_nav_menus')) {
 	register_nav_menus( array(
-		'primary-menu' => __('Primary Navigation', 'theme_name'),
-		'footer-menu' => __('Footer Navigation', 'theme_name'),
+		'primary-menu' => __('Primary Navigation', 'theme_local'),
+		'footer-menu' => __('Footer Navigation', 'theme_local'),
 	));
 }
 
@@ -414,7 +414,7 @@ if (function_exists('register_nav_menus')) {
 	register_sidebar(
 		array(
 			'id'            => 'sidebar-top',
-			'name'          => __('Sidebar Top', 'theme_name'),
+			'name'          => __('Sidebar Top', 'theme_local'),
 			'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
 			'after_widget'  => '<div class="hr"></div>',
 			'before_title'  => '<h3 class="widget-title">',
