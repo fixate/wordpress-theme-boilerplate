@@ -4,11 +4,11 @@
  *
  * The area of the page that contains both current comments
  * and the comment form. The actual display of comments is
- * handled by a callback to twentytwelve_comment() which is
+ * handled by a callback to theme_local_comment() which is
  * located in the functions.php file.
  *
  * @package WordPress
- * @subpackage Theme_Name
+ * @subpackage theme_folder
  * @since Theme Name 1.0
  */
 
@@ -26,7 +26,7 @@ if ( post_password_required())
 <section id="comments">
 
 	<h2>
-		<?php printf( _n('One response to &ldquo;%2$s&rdquo;', '%1$s responses to &ldquo;%2$s&rdquo;', get_comments_number(), 'theme_name'), number_format_i18n(get_comments_number()), '<span>' . get_the_title() . '</span>'); ?>
+		<?php printf( _n('One response to &ldquo;%2$s&rdquo;', '%1$s responses to &ldquo;%2$s&rdquo;', get_comments_number(), 'theme_local'), number_format_i18n(get_comments_number()), '<span>' . get_the_title() . '</span>'); ?>
 	</h2>
 
 	<?php if ( have_comments()) : ?>
@@ -37,7 +37,7 @@ if ( post_password_required())
 
 	<?php else : ?>
 
-		<p><?php _e('Be the first to leave a comment!', 'theme_name')?></p>
+		<p><?php _e('Be the first to leave a comment!', 'theme_local')?></p>
 
 	<?php endif; // have_comments() ?>
 
@@ -47,7 +47,7 @@ if ( post_password_required())
 			'author' =>
 				'<p class="comment-form-author">' .
 					'<label for="author">' .
-						__('Your Name' , 'theme_name') . ($req ? '<span class="required">*</span>' : '') .
+						__('Your Name' , 'theme_local') . ($req ? '<span class="required">*</span>' : '') .
 					'</label> ' .
 					'<input id="author" name="author" type="text" value="' .
 						esc_attr($commenter['comment_author']) . '" size="30"' . ' class="required" />' .
@@ -55,14 +55,14 @@ if ( post_password_required())
 			'email'  =>
 				'<p class="comment-form-email">' .
 					'<label for="email">' .
-						__('Your Email' , 'theme_name') .	($req ? '<span class="required">*</span>' : '') .
+						__('Your Email' , 'theme_local') .	($req ? '<span class="required">*</span>' : '') .
 					'</label> ' .
 					'<input id="email" name="email" type="text" value="' . esc_attr(  $commenter['comment_author_email']) . '" size="30"' . ' class="required email" />' .
 				'</p>',
 			'url'    =>
 				'<p class="comment-form-url">' .
 					'<label for="url">' .
-						__('Your Website' , 'theme_name') .
+						__('Your Website' , 'theme_local') .
 					'</label> ' .
 					'<input id="url" name="url" type="text" value="' . esc_attr(  $commenter['comment_author_url']) . '" size="30"' . ' />' .
 				'</p>')),
@@ -74,11 +74,11 @@ if ( post_password_required())
 			'<p class="logged-in-as">' .
 				sprintf( __('Logged in as <a href="%1$s">%2$s</a>. <a href="%3$s">Log out?</a>'), admin_url('profile.php'), $user_identity, wp_logout_url( apply_filters('the_permalink', get_permalink($post->id)))) .
 			'</p>',
-		'title_reply'						=> __('Leave a Reply' , 'theme_name'),
+		'title_reply'						=> __('Leave a Reply' , 'theme_local'),
 		'comment_notes_before'	=> '<p><em>' . __( 'Your email address will not be published.' ) . '</em></p>',
 		'comment_notes_after'		=> '',
-		'cancel_reply_link'			=> __('Cancel' , 'theme_name'),
-		'label_submit'					=> __('Post Comment' , 'theme_name'),
+		'cancel_reply_link'			=> __('Cancel' , 'theme_local'),
+		'label_submit'					=> __('Post Comment' , 'theme_local'),
 		);
 	?>
 

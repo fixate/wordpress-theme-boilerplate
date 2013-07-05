@@ -3,7 +3,7 @@
  * The Template for displaying all single posts.
  *
  * @package WordPress
- * @subpackage Theme_Name
+ * @subpackage theme_folder
  * @since Theme Na,e 1.0
  */
 

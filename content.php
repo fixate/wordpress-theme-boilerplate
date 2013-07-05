@@ -3,7 +3,7 @@
  * The default template for displaying content. Used for both single and index/archive/search.
  *
  * @package WordPress
- * @subpackage Theme_Name
+ * @subpackage theme_folder
  * @since Theme Name 1.0
  */
 ?>
@@ -28,7 +28,7 @@
 		<?php if ( comments_open()) : ?>
 			<span>
 				<?php
-					comments_popup_link( __('0 Comments', 'theme_name'), __('1 Comment', 'theme_name'), __('% Comments', 'theme_name'));
+					comments_popup_link( __('0 Comments', 'theme_local'), __('1 Comment', 'theme_local'), __('% Comments', 'theme_local'));
 				?>
 			</span>
 		<?php endif; // comments_open() ?>
@@ -36,7 +36,7 @@
 
 	<?php if (!is_single()): ?>
 		<p>
-			<?php echo theme_name_custom_excerpt(40); ?>
+			<?php echo theme_local_custom_excerpt(40); ?>
 			<a href="<?php the_permalink() ?>">read more</a>
 		</p>
 	<?php else: ?>

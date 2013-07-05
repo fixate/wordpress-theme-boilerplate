@@ -9,10 +9,10 @@
 <?php else: ?>
 	<div class="paginate">
 	 <?php if (get_next_posts_link()): ?>
-		<span class="prev"><?php next_posts_link(__('&laquo; Older Entries', 'theme_name')) ?></span>
+		<span class="prev"><?php next_posts_link(__('&laquo; Older Entries', 'theme_local')) ?></span>
 	 <?php endif ?>
 	 <?php if (get_previous_posts_link()): ?>
-		<span class="next"><?php previous_posts_link(__('Newer Entries &raquo;', 'theme_name')) ?></span>
+		<span class="next"><?php previous_posts_link(__('Newer Entries &raquo;', 'theme_local')) ?></span>
 	 <?php endif ?>
 	</div>
 <?php endif ?>
