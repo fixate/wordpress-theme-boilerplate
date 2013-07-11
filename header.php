@@ -38,7 +38,7 @@
 				<?php wp_nav_menu(array(
 					'theme_location' => 'menu-primary',
 					'fallback_cb' => 'default_primary_menu',
-					'menu_class' => 'menu',
+					'menu_class' => 'menu menu-primary',
 					'container' => false,
 				)); ?>
 			</nav>
