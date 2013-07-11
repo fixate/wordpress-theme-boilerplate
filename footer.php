@@ -18,11 +18,11 @@
 				<?php // footer navigation ?>
 				<?php
 					wp_nav_menu(array(
-						'theme_location' => 'footer-menu',
+						'theme_location' => 'menu-footer',
 						'fallback_cb' => '',
 						'container'  => '',
-						'menu_id' => 'footer-menu',
-						'menu_class' => 'footer-menu'
+						'menu_id' => 'menu-footer',
+						'menu_class' => 'menu-footer'
 						)
 					);
 				?>

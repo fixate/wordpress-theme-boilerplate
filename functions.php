@@ -395,8 +395,8 @@ function theme_local_add_taxonomy_to_cpt(){
  */
 if (function_exists('register_nav_menus')) {
 	register_nav_menus( array(
-		'primary-menu' => __('Primary Navigation', 'theme_local'),
-		'footer-menu' => __('Footer Navigation', 'theme_local'),
+		'menu-primary' => __('Primary Navigation', 'theme_local'),
+		'menu-footer' => __('Footer Navigation', 'theme_local'),
 	));
 }
 
