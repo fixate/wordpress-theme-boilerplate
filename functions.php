@@ -331,7 +331,7 @@ function theme_local_reply_link_class($class){
 /*function theme_local_register_post_types() {
 	register_post_type('[posttype]', array(
 		'labels' => array(
-			'name'               => __('All [posttype]s', ''),
+			'name'               => __('[posttype]s', ''),
 			'singular_name'      => __('[posttype]', ''),
 			'all_items'          => __('All Items', ''),
 			'add_new'            => __('Add New', ''),
