@@ -3,61 +3,37 @@
 // Start with an underscore to hide fields from custom fields list
 $prefix = '_theme_local_';
 
-$meta_boxes = array(
+/*$meta_boxes = array(
 	array(
-		'id' => 'meta-header-after',
-		'title' => 'After Header',
+		'id' => 'meta-[id]',
+		'title' => '[Title]',
 		'pages' => array('page'), // multiple post types
 		'context' => 'normal',
 		'priority' => 'high',
 		'fields' => array(
 			array(
-				'name' => 'Text After',
+				'name' => '[Field Name]',
 				'desc' => '',
-				'id' => $prefix . 'header-after',
-				'type' => 'text',
-				'std' => ''
-			)
-		)
-	),
-	array(
-		'id' => 'home-image',
-		'title' => 'Home Link',
-		'pages' => array('page'), // multiple post types
-		'context' => 'side',
-		'priority' => 'low',
-		'fields' => array(
-			array(
-				'name' => 'Image URL',
-				'desc' => '',
-				'id' => $prefix . 'home-image',
+				'id' => $prefix . '[field id]',
 				'type' => 'text',
 				'std' => ''
 			),
 			array(
-				'name' => 'Text Top',
+				'name' => '[Field Name]',
 				'desc' => '',
-				'id' => $prefix . 'text-top',
-				'type' => 'text',
-				'std' => ''
-			),
-			array(
-				'name' => 'Text Middle',
-				'desc' => '',
-				'id' => $prefix . 'text-middle',
-				'type' => 'text',
-				'std' => ''
-			),
-			array(
-				'name' => 'Text Bottom',
-				'desc' => '',
-				'id' => $prefix . 'text-bottom',
-				'type' => 'text',
-				'std' => ''
+				'id' => $prefix . '[field id]',
+				'type' => 'select',
+				'std' => '',
+				'options' => array(
+					array('name' => 'option1',		'value' => 'option1'),
+					array('name' => 'option2',		'value' => 'option2'),
+					array('name' => 'option3',		'value' => 'option3'),
+					array('name' => 'option4',		'value' => 'option4'),
+				),
 			)
 		)
 	)
-);
+);*/
 
 foreach ($meta_boxes as $meta_box) {
 	$my_box = new Themename_meta_box($meta_box);
@@ -110,7 +86,7 @@ class Themename_meta_box {
 					case 'select':
 						echo '<select name="', $field['id'], '" id="', $field['id'], '">';
 						foreach ($field['options'] as $option) {
-							echo '<option', $meta == $option ? ' selected="selected"' : '', '>', $option, '</option>';
+							echo '<option value="', $option['value'], '"', $meta == $option['value'] ? ' selected="selected"' : '', '>', $option['name'], '</option>';
 						}
 						echo '</select>';
 						break;
