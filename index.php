@@ -22,7 +22,7 @@ get_header(); ?>
 		<?php get_template_part('content', get_post_format()); ?>
 	<?php endwhile; ?>
 
-	<?php get_template_part('pagination'); ?>
+	<?php get_template_part('partials/pagination'); ?>
 
 <?php else : ?>
 
