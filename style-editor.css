@@ -1,0 +1,9 @@
+@import url('style.css');
+
+/* Overwrite theme styles for editor */
+body {
+	font-family: inherit;
+	color: inherit;
+	background: #fff;
+	padding: 0 1.5rem;
+}
