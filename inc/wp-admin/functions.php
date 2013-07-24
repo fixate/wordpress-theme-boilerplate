@@ -3,9 +3,23 @@
 # Include custom metaboxes
 # require_once ('metaboxes.php');
 
-// General Admin Initialisation
-function mp_admin_init() {
+/**
+ * Register and enqueue admin styles
+ *
+ * @since Theme_Name 1.0
+ */
+/*function theme_local_admin_init() {
   // Register and enqueue admin scripts
-  wp_register_style('mp-admin', THEME_URI. '/inc/wp-admin/css/admin.css');
-  wp_enqueue_style('mp-admin');
-} add_action('admin_init', 'mp_admin_init');
+  wp_register_style('theme_local-admin', THEME_URI. '/inc/wp-admin/css/admin.css');
+  wp_enqueue_style('theme_local-admin');
+} add_action('admin_init', 'theme_local_admin_init');*/
+
+/**
+ * Add theme favicon to admin area
+ *
+ * @since Theme_Name 1.0
+ */
+function theme_local_admin_area_favicon() {
+	$favicon_url = get_bloginfo('stylesheet_directory') . '/img/favicon.ico';
+	echo '<link rel="shortcut icon" href="' . $favicon_url . '" />';
+} add_action('admin_head', 'theme_local_admin_area_favicon');
