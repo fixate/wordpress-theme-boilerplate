@@ -23,7 +23,7 @@
 			<div class="alert alert-danger">Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a modern browser</a> to experience this site.</div>
 		</div>
 		<![endif]-->
-	<header>
+	<header role="banner">
 
 		<div class="wrap cf">
 

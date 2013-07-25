@@ -11,7 +11,7 @@
 
 		</div><!-- .area-content -->
 
-		<footer class="area-footer">
+		<footer class="area-footer" role="contentinfo">
 
 			<div class="wrap cf">
 
