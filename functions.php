@@ -67,7 +67,7 @@ if (is_admin()) {
  * @since Theme_Name 1.0
  */
 function theme_local_init() {
-	// If in the admin, nonet of the code below applies
+	// If in the admin, none of the code below applies
 	if (is_admin())
 		return;
 
