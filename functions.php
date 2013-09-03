@@ -169,7 +169,7 @@ if (! function_exists('theme_local_comment')) {
 	 */
 	function theme_local_comment($comment, $args, $depth) {
 		$GLOBALS['comment'] = $comment;
-		include 'comment-single.php';
+		include 'partials/comment-single.php';
 	}
 }
 
