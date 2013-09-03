@@ -14,7 +14,7 @@ Template Name: Contact form template (Remove if not using)
 get_header(); ?>
 
 	<?php while ( have_posts()) : the_post(); ?>
-		<?php get_template_part('contactform', 'page') ?>
+		<?php get_template_part('partials/contactform', 'page') ?>
 	<?php endwhile; ?>
 
 <?php get_sidebar(); ?>
