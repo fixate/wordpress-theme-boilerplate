@@ -1,56 +1,47 @@
 <?php
 
-/*
- * Name: mp_shortcode_loop
- *
- * WORDPRESS SHORTCODE
- * - Creates a wp_query from the query attribute
- *   and inserts html from a template file ($template[-{$name}]?.php)
- *
- * @param $atts ARRAY (name, template, query)
- * @param $content STRING (Optional) Content is ignored
- * @return STRING evaluated content of template file
+/**
+ * creates a wp_query from the query attribute, and inserts html from a template file
+ * @param  array $atts    attributes of the shortcode
+ * @param  string $content [ignored]
+ * @return string          the resulting markup
  */
-function mp_shortcode_loop($atts, $content = null) {
-  extract(shortcode_atts(
-            array(
-              'name' => '',
-              'template' => 'loop',
-              'query' => 'post_type=post'
-           ), $atts));              
+function fix8_shortcode_loop($atts, $content = null) {
+	extract(shortcode_atts(
+						array(
+							'name' => '',
+							'template' => 'loop',
+							'query' => 'post_type=post'
+					 ), $atts));
 
-  global $wp_query;
-  $old_wp = $wp_query;
-  
-  $wp_query = new WP_Query($query);
+	global $wp_query;
+	$old_wp = $wp_query;
 
-  ob_start(); 
-  get_template_part($template, $name);
+	$wp_query = new WP_Query($query);
 
-  $wp_query = $old_wp;
-  return ob_get_clean();
-} add_shortcode('loop', 'mp_shortcode_loop');
+	ob_start();
+	get_template_part($template, $name);
 
-/*
- * Name: mp_shortcode_htmltag
- *
- * WORDPRESS SHORTCODE
- * - Inserts an html tag
- *
- * @param $atts ARRAY (tag, [any other attribute for the tag])
- * @param $content STRING (Optional) Content to be included in the tag
- * @return STRING Html tag
+	$wp_query = $old_wp;
+	return ob_get_clean();
+} add_shortcode('loop', 'theme_local_shortcode_loop');
+
+/**
+ * write html tag as shortcode in editor
+ * @param  array $args    	arguments used in shortcode
+ * @param  string $content 	the content of the shortcode
+ * @return string          	the resulting markup
  */
-function mp_shortcode_htmltag($args, $content = null) {
-  if (!$tag = $args['tag'])
-    return $content;
-  unset($args['tag']);
+function theme_local_shortcode_htmltag($args, $content = null) {
+	if (!$tag = $args['tag'])
+		return $content;
+	unset($args['tag']);
 
-  $attrs = '';
-  if ($args && is_array($args)) {
-    foreach ($args as $k => $v) {
-      $attrs .= " {$k}=\"{$v}\"";
-    }
-  }
-  return sprintf('<%1$s %2$s>%3$s</%1$s>', $tag, $attrs, do_shortcode($content));
-} add_shortcode('htmltag', 'mp_shortcode_htmltag');
+	$attrs = '';
+	if ($args && is_array($args)) {
+		foreach ($args as $k => $v) {
+			$attrs .= " {$k}=\"{$v}\"";
+		}
+	}
+	return sprintf('<%1$s %2$s>%3$s</%1$s>', $tag, $attrs, do_shortcode($content));
+} add_shortcode('htmltag', 'theme_local_shortcode_htmltag');
