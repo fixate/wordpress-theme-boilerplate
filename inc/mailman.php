@@ -5,7 +5,7 @@ require_once 'vendor/phpmailer/class.phpmailer.php';
 class Mailman
 {
 	private $notifications = null;
-	
+
 	private $validations = null;
 	private $validation_messages = null;
 
@@ -84,7 +84,7 @@ class Mailman
 
 		if (isset($options['validation_messages'])) {
 			$this->validation_messages = $options['validation_messages'];
-		}		
+		}
 
 		if (isset($options['templates'])) {
 			$this->set_templates($options['templates']);
@@ -154,7 +154,7 @@ class Mailman
 			$this->data = array();
 		}
 		$this->data = array_merge($this->data, $data);
-		return $this;		
+		return $this;
 	}
 
 	public function get_mailer()
@@ -178,7 +178,7 @@ class Mailman
 		if (!$this->has_notifications()) {
 			return '';
 		}
-		
+
 		$result  = '';
 		foreach ($this->notifications() as $type => $messages) {
 			$class = sprintf(
@@ -209,7 +209,7 @@ class Mailman
 				foreach ($this->validations[$field] as $cb => $message) {
 					// Friendly name for field
 					if (is_string($message) && $message[0] == '@') {
-						$field_name = substr($message, 1);		
+						$field_name = substr($message, 1);
 						continue;
 					}
 
@@ -318,13 +318,13 @@ class Mailman
 		return $mailman;
 	}
 
-	protected function set_mailer_delivery_method() 
+	protected function set_mailer_delivery_method()
 	{
 		switch ($this->delivery_method) {
-			case 'sendmail': 
+			case 'sendmail':
 				$this->mailer->IsSendmail();
 			break;
-			case 'smtp': 
+			case 'smtp':
 				$this->mailer->IsSMTP();
 			break;
 			default: throw new Exception("Unsupported delivery method '{$this->delivery_method}.");
@@ -343,7 +343,7 @@ class Mailman
 
 		$parts = preg_split('#%body%#', $body, 2);
 		if (count($parts) == 1) {
-			$body = $parts[0];			
+			$body = $parts[0];
 			$subject = null;
 		} else {
 			list($subject, $body) = $parts;
@@ -366,7 +366,7 @@ class Mailman
 				$this->mailer->SetFrom($this->data[$ff[0]], $this->data[$ff[1]]);
 			} else {
 				$this->mailer->SetFrom($this->data[$ff[0]]);
-			}			
+			}
 		}
 	}
 

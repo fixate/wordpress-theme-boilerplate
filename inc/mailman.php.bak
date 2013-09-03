@@ -70,7 +70,7 @@ class Mailman
 			}
 		}
 
-		return $this;		
+		return $this;
 	}
 
 	public function to($email)
@@ -100,7 +100,7 @@ class Mailman
 		return $default;
 	}
 
-	public function talks_to_you() 
+	public function talks_to_you()
 	{
 		if (!self::has_post()) {
 			return;
