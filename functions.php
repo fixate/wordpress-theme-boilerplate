@@ -125,14 +125,6 @@ remove_action('wp_head', 'adjacent_posts_rel_link_wp_head');
 // 	return $avatar_defaults;
 // } add_filter( 'avatar_defaults', 'theme_local_add_gravatar' );
 
-/**
- * Use theme styles for editor
- *
- * @since Theme_Name 1.0
- */
-function ht_add_editor_styles() {
-	add_editor_style( 'style-editor.css' );
-} add_action( 'init', 'ht_add_editor_styles' );
 
 
 /* *****************************************************************************
