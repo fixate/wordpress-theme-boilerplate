@@ -83,6 +83,7 @@ function theme_local_init() {
 
 } add_action('init', 'theme_local_init');
 
+
 /**
  * Enqueue scripts and styles for front-end.
  *
@@ -102,6 +103,7 @@ function theme_local_enqueue_scripts_styles() {
 
 } add_action('wp_enqueue_scripts', 'theme_local_enqueue_scripts_styles');
 
+
 /**
  * Remove junk from head
  *
@@ -116,6 +118,7 @@ remove_action('wp_head', 'feed_links_extra', 3);
 remove_action('wp_head', 'start_post_rel_link', 10, 0);
 remove_action('wp_head', 'parent_post_rel_link', 10, 0);
 remove_action('wp_head', 'adjacent_posts_rel_link_wp_head');
+
 
 /**
  * Add Theme_Name avatar
@@ -169,6 +172,7 @@ if (! function_exists('theme_local_comment')) {
 		include 'comment-single.php';
 	}
 }
+
 
 /**
  * Customise post excerpts
