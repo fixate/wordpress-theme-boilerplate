@@ -32,7 +32,7 @@ if ( post_password_required())
 	<?php if ( have_comments()) : ?>
 
 		<ol class="list-reset">
-			<?php wp_list_comments( array('callback' => 'bspark_comment', 'style' => 'ol')); ?>
+			<?php wp_list_comments( array('callback' => 'theme_local_comment', 'style' => 'ol')); ?>
 		</ol><!-- .commentlist -->
 
 	<?php else : ?>
