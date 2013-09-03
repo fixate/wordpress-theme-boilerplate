@@ -5,7 +5,7 @@ define('THEME_BASEPATH', str_replace('\\', '/', dirname(__FILE__)));
 define('GA_UACODE', false);
 
 // Add theme support - must come before init() hook
-if ( function_exists('add_theme_support')) {
+if (function_exists('add_theme_support')) {
 	add_theme_support('post-thumbnails');
 	add_theme_support('nav_menus');
 	add_theme_support('automatic_feed_links');
@@ -54,6 +54,10 @@ if (is_admin()) {
 	require_once 'inc/wp-admin/functions.php';
 }
 
+
+
+
+
 /* *****************************************************************************
 	 &actions
 	 ************************************************************************** */
@@ -91,7 +95,7 @@ function theme_local_enqueue_scripts_styles() {
 	 * Add JavaScript to pages with the comment form to support sites with
 	 * threaded comments (when in use).
 	 */
-	if ( is_singular() && comments_open() && get_option('thread_comments'))
+	if (is_singular() && comments_open() && get_option('thread_comments'))
 		wp_enqueue_script('comment-reply', '', '', '', 'true');
 
 	wp_enqueue_script('jquery');
@@ -123,7 +127,9 @@ remove_action('wp_head', 'adjacent_posts_rel_link_wp_head');
 // 	$avatar_defaults[$avatar] = 'Theme_Name';
 
 // 	return $avatar_defaults;
-// } add_filter( 'avatar_defaults', 'theme_local_add_gravatar' );
+// } add_filter('avatar_defaults', 'theme_local_add_gravatar');
+
+
 
 
 
@@ -138,7 +144,7 @@ remove_action('wp_head', 'adjacent_posts_rel_link_wp_head');
  *
  * @since Theme_Name 1.0
  */
-if ( ! function_exists('default_primary_menu')) {
+if (! function_exists('default_primary_menu')) {
 	function default_primary_menu() {
 		echo '<ul class="menu-primary">';
 		wp_list_pages('title_li=');
@@ -147,7 +153,7 @@ if ( ! function_exists('default_primary_menu')) {
 }
 
 
-if ( ! function_exists('theme_local_comment')) {
+if (! function_exists('theme_local_comment')) {
 	/**
 	 * Template for comments and pingbacks.
 	 *
@@ -280,6 +286,9 @@ endif;
 } add_action('pre_get_posts', 'theme_local_pre_get_posts');*/
 
 
+
+
+
 /* *****************************************************************************
 	 &filters
 	 ************************************************************************** */
@@ -315,6 +324,9 @@ function theme_local_reply_link_class($class){
 	$class = str_replace("class='comment-reply-link'", "class='btn'", $class);
 	return $class;
 } add_filter('comment_reply_link', 'theme_local_reply_link_class');
+
+
+
 
 
 /* *****************************************************************************
@@ -353,6 +365,9 @@ function theme_local_reply_link_class($class){
 } add_action('init', 'theme_local_register_post_types');*/
 
 
+
+
+
 /* *****************************************************************************
 	 &taxonomies
 	 ************************************************************************** */
@@ -360,17 +375,17 @@ function theme_local_reply_link_class($class){
 	register_taxonomy('[taxonomy]', '[post_type]', array(
 		'hierarchical'				=> true,
 		'labels'							=> array(
-			'name'							=> _x( '[taxonomy_plural]', 'taxonomy general name' ),
-			'singular_name'			=> _x( '[taxonomy_singular]', 'taxonomy singular name' ),
-			'search_items'			=>  __( 'Search [taxonomy_plural]' ),
-			'all_items'					=> __( 'All [taxonomy_plural]' ),
-			'parent_item'				=> __( 'Parent [taxonomy_singular]' ),
-			'parent_item_colon'	=> __( 'Parent [taxonomy_singular]:' ),
-			'edit_item'					=> __( 'Edit [taxonomy_singular]' ),
-			'update_item'				=> __( 'Update [taxonomy_singular]' ),
-			'add_new_item'			=> __( 'Add New [taxonomy_singular]' ),
-			'new_item_name'			=> __( 'New [taxonomy_singular] Name' ),
-			'menu_name'					=> __( '[taxonomy_plural]' ),
+			'name'							=> _x('[taxonomy_plural]', 'taxonomy general name'),
+			'singular_name'			=> _x('[taxonomy_singular]', 'taxonomy singular name'),
+			'search_items'			=>  __('Search [taxonomy_plural]'),
+			'all_items'					=> __('All [taxonomy_plural]'),
+			'parent_item'				=> __('Parent [taxonomy_singular]'),
+			'parent_item_colon'	=> __('Parent [taxonomy_singular]:'),
+			'edit_item'					=> __('Edit [taxonomy_singular]'),
+			'update_item'				=> __('Update [taxonomy_singular]'),
+			'add_new_item'			=> __('Add New [taxonomy_singular]'),
+			'new_item_name'			=> __('New [taxonomy_singular] Name'),
+			'menu_name'					=> __('[taxonomy_plural]'),
 		),
 		'rewrite'					=> array(
 			'slug'					=> '[taxonomy]',
@@ -378,11 +393,14 @@ function theme_local_reply_link_class($class){
 			'hierarchical'	=> true
 		),
 	));
-} add_action( 'init', 'theme_local_add_custom_taxonomies', 0 );
+} add_action('init', 'theme_local_add_custom_taxonomies', 0);
 
 function theme_local_add_taxonomy_to_cpt(){
 	register_taxonomy_for_object_type('[taxonomy]', '[post_type]');
 } add_action('init','theme_local_add_taxonomy_to_cpt');*/
+
+
+
 
 
 /* *****************************************************************************
@@ -395,30 +413,8 @@ function theme_local_add_taxonomy_to_cpt(){
  * @since Theme_Name 1.0
  */
 if (function_exists('register_nav_menus')) {
-	register_nav_menus( array(
+	register_nav_menus(array(
 		'menu-primary' => __('Primary Navigation', 'theme_local'),
 		'menu-footer' => __('Footer Navigation', 'theme_local'),
 	));
 }
-
-
-/* *****************************************************************************
-	 &widgets
-	 ************************************************************************** */
-
-/**
- * Register widgets
- *
- * @since Theme_Name 1.0
- */
-/*if (function_exists('register_sidebar')) {
-	register_sidebar(
-		array(
-			'id'            => 'sidebar-top',
-			'name'          => __('Sidebar Top', 'theme_local'),
-			'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
-			'after_widget'  => '<div class="hr"></div>',
-			'before_title'  => '<h3 class="widget-title">',
-			'after_title'   => '</h3>',
-		));
-}*/
