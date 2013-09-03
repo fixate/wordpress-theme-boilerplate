@@ -14,6 +14,7 @@
   wp_enqueue_style('theme_local-admin');
 } add_action('admin_init', 'theme_local_admin_init');*/
 
+
 /**
  * Add theme favicon to admin area
  *
@@ -23,6 +24,7 @@ function theme_local_admin_area_favicon() {
 	$favicon_url = get_bloginfo('stylesheet_directory') . '/img/favicon.ico';
 	echo '<link rel="shortcut icon" href="' . $favicon_url . '" />';
 } add_action('admin_head', 'theme_local_admin_area_favicon');
+
 
 /**
  * Use theme styles for editor

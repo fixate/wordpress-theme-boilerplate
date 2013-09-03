@@ -268,6 +268,8 @@ if  (GA_UACODE !== false):
 endif;
 
 
+
+
 /**
  * Mailer Functionality
  *
@@ -328,6 +330,20 @@ function theme_local_reply_link_class($class){
 	$class = str_replace("class='comment-reply-link'", "class='btn'", $class);
 	return $class;
 } add_filter('comment_reply_link', 'theme_local_reply_link_class');
+
+
+/**
+ * remove query strings from scripts and styles
+ * @param  array $src array of scripts and styles
+ * @return array
+ */
+function theme_local_remove_script_version($src)
+{
+	$parts = explode('?ver', $src);
+	return $parts[0];
+}
+add_filter('script_loader_src', 'theme_local_remove_script_version', 15, 1);
+add_filter('style_loader_src', 'theme_local_remove_script_version', 15, 1);
 
 
 
