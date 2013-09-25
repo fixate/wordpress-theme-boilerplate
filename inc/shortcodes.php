@@ -6,7 +6,7 @@
  * @param  string $content [ignored]
  * @return string          the resulting markup
  */
-function fix8_shortcode_loop($atts, $content = null) {
+function theme_local_shortcode_loop($atts, $content = null) {
 	extract(shortcode_atts(
 						array(
 							'name' => '',
