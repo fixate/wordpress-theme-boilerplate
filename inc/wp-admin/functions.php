@@ -8,11 +8,11 @@
  *
  * @since Theme_Name 1.0
  */
-/*function theme_local_admin_init() {
+/*function theme_fn_prefix_admin_init() {
   // Register and enqueue admin scripts
   wp_register_style('theme_local-admin', THEME_URI. '/inc/wp-admin/css/admin.css');
   wp_enqueue_style('theme_local-admin');
-} add_action('admin_init', 'theme_local_admin_init');*/
+} add_action('admin_init', 'theme_fn_prefix_admin_init');*/
 
 
 /**
@@ -20,10 +20,10 @@
  *
  * @since Theme_Name 1.0
  */
-function theme_local_admin_area_favicon() {
+function theme_fn_prefix_admin_area_favicon() {
 	$favicon_url = get_bloginfo('stylesheet_directory') . '/img/favicon.ico';
 	echo '<link rel="shortcut icon" href="' . $favicon_url . '" />';
-} add_action('admin_head', 'theme_local_admin_area_favicon');
+} add_action('admin_head', 'theme_fn_prefix_admin_area_favicon');
 
 
 /**
@@ -31,6 +31,6 @@ function theme_local_admin_area_favicon() {
  *
  * @since Theme_Name 1.0
  */
-function theme_local_add_editor_styles() {
+function theme_fn_prefix_add_editor_styles() {
 	add_editor_style('inc/wp-admin/css/style-editor.css');
-} add_action('init', 'theme_local_add_editor_styles');
+} add_action('init', 'theme_fn_prefix_add_editor_styles');

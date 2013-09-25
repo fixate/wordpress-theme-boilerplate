@@ -6,7 +6,7 @@
  * @param  string $content [ignored]
  * @return string          the resulting markup
  */
-function theme_local_shortcode_loop($atts, $content = null) {
+function theme_fn_prefix_shortcode_loop($atts, $content = null) {
 	extract(shortcode_atts(
 						array(
 							'name' => '',
@@ -24,7 +24,7 @@ function theme_local_shortcode_loop($atts, $content = null) {
 
 	$wp_query = $old_wp;
 	return ob_get_clean();
-} add_shortcode('loop', 'theme_local_shortcode_loop');
+} add_shortcode('loop', 'theme_fn_prefix_shortcode_loop');
 
 /**
  * write html tag as shortcode in editor
@@ -32,7 +32,7 @@ function theme_local_shortcode_loop($atts, $content = null) {
  * @param  string $content 	the content of the shortcode
  * @return string          	the resulting markup
  */
-function theme_local_shortcode_htmltag($args, $content = null) {
+function theme_fn_prefix_shortcode_htmltag($args, $content = null) {
 	if (!$tag = $args['tag'])
 		return $content;
 	unset($args['tag']);
@@ -44,4 +44,4 @@ function theme_local_shortcode_htmltag($args, $content = null) {
 		}
 	}
 	return sprintf('<%1$s %2$s>%3$s</%1$s>', $tag, $attrs, do_shortcode($content));
-} add_shortcode('htmltag', 'theme_local_shortcode_htmltag');
+} add_shortcode('htmltag', 'theme_fn_prefix_shortcode_htmltag');

@@ -14,7 +14,7 @@
 get_header(); ?>
 
 <?php if ( have_posts()) : ?>
-	<h1><?php printf( __('Tag Archives: %s', 'theme_local'), '<span>' . single_tag_title('', false) . '</span>'); ?></h1>
+	<h1><?php printf( __('Tag Archives: %s', 'theme_text_domain'), '<span>' . single_tag_title('', false) . '</span>'); ?></h1>
 
 	<?php	while ( have_posts()) : the_post(); ?>
 

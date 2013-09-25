@@ -18,13 +18,13 @@ get_header(); ?>
 	<h1>
 		<?php
 			if ( is_day()) :
-				printf( __('Daily Archives: %s', 'theme_local'), '<span>' . get_the_date() . '</span>');
+				printf( __('Daily Archives: %s', 'theme_text_domain'), '<span>' . get_the_date() . '</span>');
 			elseif ( is_month()) :
-				printf( __('Monthly Archives: %s', 'theme_local'), '<span>' . get_the_date( _x('F Y', 'monthly archives date format', 'theme_local')) . '</span>');
+				printf( __('Monthly Archives: %s', 'theme_text_domain'), '<span>' . get_the_date( _x('F Y', 'monthly archives date format', 'theme_text_domain')) . '</span>');
 			elseif ( is_year()) :
-				printf( __('Yearly Archives: %s', 'theme_local'), '<span>' . get_the_date( _x('Y', 'yearly archives date format', 'theme_local')) . '</span>');
+				printf( __('Yearly Archives: %s', 'theme_text_domain'), '<span>' . get_the_date( _x('Y', 'yearly archives date format', 'theme_text_domain')) . '</span>');
 			else :
-				_e('Archives', 'theme_local');
+				_e('Archives', 'theme_text_domain');
 			endif;
 		?>
 	</h1>

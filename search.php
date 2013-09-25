@@ -12,7 +12,7 @@ get_header(); ?>
 <?php if (have_posts()) : ?>
 
 	<section>
-		<h1 class="page-title"><?php printf( __('Results for: %s', 'theme_local'), '<span>' . get_search_query() . '</span>'); ?></h1>
+		<h1 class="page-title"><?php printf( __('Results for: %s', 'theme_text_domain'), '<span>' . get_search_query() . '</span>'); ?></h1>
 
 		<?php while (have_posts()) : the_post(); ?>
 			<?php get_template_part('content' , get_post_format()); ?>
@@ -23,7 +23,7 @@ get_header(); ?>
 
 <?php else : ?>
 
-	<p><?php _e('Sorry, we didn\'t find what you were looking for. Please try again with a different keyword.', 'theme_local'); ?></p>
+	<p><?php _e('Sorry, we didn\'t find what you were looking for. Please try again with a different keyword.', 'theme_text_domain'); ?></p>
 
 <?php endif; // have_posts() ?>
 

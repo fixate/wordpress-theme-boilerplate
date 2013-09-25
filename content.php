@@ -28,7 +28,7 @@
 		<?php if ( comments_open()) : ?>
 			<span>
 				<?php
-					comments_popup_link( __('0 Comments', 'theme_local'), __('1 Comment', 'theme_local'), __('% Comments', 'theme_local'));
+					comments_popup_link( __('0 Comments', 'theme_text_domain'), __('1 Comment', 'theme_text_domain'), __('% Comments', 'theme_text_domain'));
 				?>
 			</span>
 		<?php endif; // comments_open() ?>
@@ -36,7 +36,7 @@
 
 	<?php if (!is_single()): ?>
 		<p>
-			<?php echo theme_local_custom_excerpt(40); ?>
+			<?php echo theme_fn_prefix_custom_excerpt(40); ?>
 			<a href="<?php the_permalink() ?>">read more</a>
 		</p>
 	<?php else: ?>

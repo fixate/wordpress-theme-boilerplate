@@ -12,7 +12,7 @@ class Foo_Widget extends WP_Widget {
 		parent::__construct(
 			'foo_widget', // Base ID
 			'Foo_Widget', // Name
-			array('description' => __('A Foo Widget', 'theme_local'),) // Args
+			array('description' => __('A Foo Widget', 'theme_text_domain'),) // Args
 		);
 	}
 
@@ -31,7 +31,7 @@ class Foo_Widget extends WP_Widget {
 		echo $before_widget;
 		if ( ! empty($title))
 			echo $before_title . $title . $after_title;
-		echo __('Hello, World!', 'theme_local');
+		echo __('Hello, World!', 'theme_text_domain');
 		echo $after_widget;
 	}
 
@@ -64,7 +64,7 @@ class Foo_Widget extends WP_Widget {
 			$title = $instance['title'];
 		}
 		else {
-			$title = __('New title', 'theme_local');
+			$title = __('New title', 'theme_text_domain');
 		}
 		?>
 		<p>
