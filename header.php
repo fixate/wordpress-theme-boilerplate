@@ -28,9 +28,11 @@
 
 		<div class="wrap cf">
 
-				<!--[if lte IE 8]><a class="logo" href="<?php echo home_url('/'); ?>"><img src="<?php echo THEME_URI; ?>/img/logo.png"></a><![endif]-->
-				<!--[if gt IE 8]><a class="logo" href="<?php echo home_url('/'); ?>"><img src="<?php echo THEME_URI; ?>/img/logo.svg"></a><![endif]-->
-				<!--[if !IE]> --><a class="logo" href="<?php echo home_url('/'); ?>"><img src="<?php echo THEME_URI; ?>/img/logo.svg"></a><!-- <![endif]-->
+					<a class="logo" href="<?php echo home_url('/'); ?>">
+            <svg width="100" height="100">
+							<image xlink:href="<?php echo THEME_URI; ?>/img/logo.svg" src="<?php echo THEME_URI; ?>/img/logo.png"  width="100" height="100" />
+						</svg>
+					</a>
 
 			<?php // allow screenreaders to skip navigation ?>
 			<a class="visuallyhidden" href="#main">skip navigation and go to main content</a>
