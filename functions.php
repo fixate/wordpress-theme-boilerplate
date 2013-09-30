@@ -81,6 +81,12 @@ function theme_fn_prefix_init() {
 	wp_register_script('jquery', 'http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js', false, false, true);
 	wp_register_script('comment-reply', ' /wp-includes/js/comment-reply.min.js', array('jquery'), false, true);
 
+  if (defined('WP_LOCAL_DEV') && WP_LOCAL_DEV === true) {
+    // define unminified scripts here
+  } else {
+    // define minified / production scripts here
+  }
+
 } add_action('init', 'theme_fn_prefix_init');
 
 
