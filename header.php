@@ -19,14 +19,14 @@
 	<body <?php body_class(); ?>>
 
 		<!--[if lte IE 8]>
-		<div class="wrap cf">
+		<div class="wrap">
 			<div class="alert">Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a modern browser</a> to experience this site.</div>
 		</div>
 		<![endif]-->
 
 	<header role="banner">
 
-		<div class="wrap cf">
+		<div class="wrap">
 
 					<a class="logo" href="<?php echo home_url('/'); ?>">
             <svg width="100" height="100">
@@ -52,4 +52,4 @@
 
 	<div class="area-content">
 
-		<div id="main" class="wrap cf" role="main">
+		<div id="main" class="wrap" role="main">
