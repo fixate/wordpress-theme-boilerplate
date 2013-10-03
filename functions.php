@@ -253,7 +253,7 @@ function theme_fn_prefix_paginate_links($total = -1) {
  *
  * @since Theme_Name 1.0
  */
-if  (defined('WP_LOCAL_DEV') && WP_LOCAL_DEV === true && GA_UACODE !== false):
+if  (defined('WP_LOCAL_DEV') && WP_LOCAL_DEV !== true && GA_UACODE !== false):
 	function theme_fn_prefix_add_google_analytics() {
 	 ?>
 <script>
