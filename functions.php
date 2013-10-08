@@ -352,6 +352,14 @@ add_filter('script_loader_src', 'theme_fn_prefix_remove_script_version', 15, 1);
 add_filter('style_loader_src', 'theme_fn_prefix_remove_script_version', 15, 1);
 
 
+/**
+ * ensure WordPress outputs full quality images
+ */
+function theme_fn_jpeg_quality() {
+  return 100;
+} add_filter( 'jpeg_quality', 'theme_fn_jpeg_quality' );
+
+
 
 
 
