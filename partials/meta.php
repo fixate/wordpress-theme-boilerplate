@@ -9,7 +9,7 @@
 
 	<?php // Windows 8 start screen tile ?>
 	<meta name="msapplication-TileColor" content="#ffffff"/>
-	<meta name="msapplication-TileImage" content="apple-touch-icon-144x144-precomposed.png"/>
+	<meta name="msapplication-TileImage" content="apple-touch-icon-152x152-precomposed.png"/>
 
 	<link rel="SHORTCUT ICON" href="<?php echo THEME_URI; ?>/img/favicon.ico" type="image/x-icon" />
 	<link rel="logo" type="image/svg" href="<?php echo THEME_URI; ?>/img/logo.svg"/>
