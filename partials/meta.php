@@ -23,7 +23,7 @@
 	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
 
 	<!--[if lte IE 7]>
-		<link rel="stylesheet" href="http://universal-ie6-css.googlecode.com/files/ie6.1.1.css" media="screen, projection">
+  <link rel="stylesheet" href="http://universal-ie6-css.googlecode.com/files/ie6.1.1.css" media="screen, projection">
 	<![endif]-->
 
 	<!--[if lt IE 9]>
