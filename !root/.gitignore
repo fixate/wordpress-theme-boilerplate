@@ -1,0 +1,29 @@
+.DS_STORE
+config.rb
+projects/*.sublime-workspace
+.sass-cache/
+
+# ignore symlinked styleguide folders and files
+styleguide/css
+styleguide/img
+styleguide/fnt
+styleguide/style.css
+
+#ignore WordPress files and folders
+src/wp-content/blogs.dir/
+src/wp-content/upgrade/
+src/wp-content/uploads/
+src/wp-content/backup-db/
+src/wp-content/advanced-cache.php
+src/wp-content/wp-cache-config.php
+src/sitemap.xml
+src/*.log
+src/wp-content/cache/
+src/wp-content/backups/
+src/sitemap.xml.gz
+src/local-config.php
+
+# ignore grunt files
+node_modules
+npm-debug.log
+
