@@ -106,7 +106,7 @@ function theme_fn_prefix_enqueue_scripts_styles() {
 	wp_deregister_script('jquery');
 	wp_register_script('jquery', 'http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js', false, false, true);
 	wp_enqueue_script('jquery');
-} if (!is_admin()) { add_action('wp_enqueue_scripts', 'yr_enqueue_scripts_styles');}
+} if (!is_admin()) { add_action('wp_enqueue_scripts', 'theme_fn_prefix_enqueue_scripts_styles');}
 
 
 /**
