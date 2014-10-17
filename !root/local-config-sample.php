@@ -38,5 +38,10 @@ define('WP_DEBUG', true);
 define('EMPTY_TRASH_DAYS', 0 );
 
 /* ============================================================================
+ * Don't ask for FTP credentials in dev environment
+ * ===========================================================================*/
+define('FS_METHOD', 'direct');
+
+/* ============================================================================
  * Import Local Test Data via admin - https://wpcom-themes.svn.automattic.com/demo/theme-unit-test-data.xml
  * ===========================================================================*/
