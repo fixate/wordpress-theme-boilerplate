@@ -39,8 +39,11 @@ define('EMPTY_TRASH_DAYS', 0 );
 
 /* ============================================================================
  * Don't ask for FTP credentials in dev environment
+ *
+ * If having issues on Mac, you may need to update our Apache User and Group:
+ * https://gist.github.com/larrybotha/0600c4fec587cafebb7a
  * ===========================================================================*/
-define('FS_METHOD', 'direct');
+// define('FS_METHOD', 'direct');
 
 /* ============================================================================
  * Import Local Test Data via admin - https://wpcom-themes.svn.automattic.com/demo/theme-unit-test-data.xml
